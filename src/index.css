@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 12 100% 2%;
+    --foreground: 30 20% 85%;
+
+    --card: 12 50% 8%;
+    --card-foreground: 30 20% 85%;
+
+    --popover: 12 50% 6%;
+    --popover-foreground: 30 20% 85%;
+
+    --primary: 25 35% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 15 15% 30%;
+    --secondary-foreground: 30 20% 85%;
+
+    --muted: 15 20% 20%;
+    --muted-foreground: 30 15% 70%;
+
+    --accent: 25 90% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 15 20% 18%;
+    --input: 15 20% 15%;
+    --ring: 25 35% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom brand colors */
+    --warm-glow: 25 35% 50%;
+    --warm-light: 30 25% 70%;
+    --cta-orange: 22 90% 53%;
+    --deep-brown: 12 50% 9%;
+    --soft-cream: 30 20% 85%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(12 100% 2%) 0%, hsl(12 60% 11%) 50%, hsl(25 35% 35%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(12 50% 8%) 0%, hsl(12 40% 12%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(25 35% 50% / 0.15) 0%, transparent 70%);
+
+    /* Typography */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Raleway', sans-serif;
+
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsl(25 35% 50% / 0.3);
+    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+    --shadow-button: 0 10px 30px hsl(22 90% 53% / 0.4);
+
+    --sidebar-background: 12 50% 6%;
+    --sidebar-foreground: 30 20% 85%;
+    --sidebar-primary: 25 35% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 15 20% 15%;
+    --sidebar-accent-foreground: 30 20% 85%;
+    --sidebar-border: 15 20% 18%;
+    --sidebar-ring: 25 35% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, hsl(12 100% 2%) 0%, hsl(12 60% 11%) 100%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply text-white font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--warm-glow)) 0%, hsl(var(--warm-light)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px hsl(25 35% 50% / 0.25);
+  }
+
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-glow::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, hsl(22 90% 60%) 0%, hsl(22 90% 45%) 100%);
+  }
+
+  .btn-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--warm-glow) / 0) 0%,
+      hsl(var(--warm-glow) / 0.3) 50%,
+      hsl(var(--warm-glow) / 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .parallax-slow {
+    transform: translateZ(-1px) scale(2);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-xl;
+    background: hsl(12 50% 6% / 0.8);
+    border: 1px solid hsl(var(--warm-glow) / 0.1);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

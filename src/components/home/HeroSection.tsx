@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import afsalImg from "@/assets/afsal-zaini.jpg"; // <-- ADD THIS
 
 const HeroSection = () => {
   return (
@@ -15,7 +16,8 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left content */}
+          
+          {/* Text Content */}
           <div className="order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -30,38 +32,36 @@ const HeroSection = () => {
               >
                 Business Growth Coach
               </motion.span>
-              
+
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
               >
-                Afsal{" "}
-                <span className="text-gradient">Zaini</span>
+                Afsal <span className="text-gradient">Zaini</span>
               </motion.h1>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="font-display text-xl md:text-2xl text-foreground italic mb-8"
               >
-                "Business is not small.{" "}
-                <span className="text-white">Businessman is small.</span>"
+                "Business is not small. <span className="text-white">Businessman is small.</span>"
               </motion.p>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-foreground text-lg leading-relaxed mb-10 max-w-xl"
               >
-                Empowering entrepreneurs to transform their businesses and lives. 
-                With 5-7 years of experience as a Business Development Specialist, 
+                Empowering entrepreneurs to transform their businesses and lives.
+                With 5–7 years of experience as a Business Development Specialist,
                 Growth Strategist, and CEO of Kauzar Academy.
               </motion.p>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -74,7 +74,8 @@ const HeroSection = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="group">
+
+                <Button asChild variant="outline" size="lg">
                   <Link to="/about">
                     <Play className="mr-2 h-5 w-5" />
                     Learn More
@@ -84,7 +85,7 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right content - Profile image */}
+          {/* Right Content — IMAGE */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -92,10 +93,10 @@ const HeroSection = () => {
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
             <div className="relative">
-              {/* Glow behind image */}
+              {/* Glow Behind Image */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-accent/30 rounded-full blur-[80px] scale-110" />
-              
-              {/* Decorative rings */}
+
+              {/* Decorative Rings */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -106,16 +107,20 @@ const HeroSection = () => {
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 className="absolute -inset-16 border border-primary/10 rounded-full"
               />
-              
-              {/* Image container */}
+
+              {/* Image Container */}
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-                <div className="w-full h-full bg-gradient-to-br from-muted to-card flex items-center justify-center">
-                  <span className="font-display text-8xl text-primary/30">AZ</span>
-                </div>
+                <img
+                  src={afsalImg}
+                  alt="Afsal Zaini"
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent" />
               </div>
-              
-              {/* Floating badge */}
+
+              {/* Floating Badge */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -129,7 +134,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

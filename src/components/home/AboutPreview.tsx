@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import afsalImg from "@/assets/afsal-thumbs.jpg"; // <-- ADD THIS
 
 const stats = [
   { value: "5+", label: "Years of Experience" },
@@ -18,7 +19,8 @@ const AboutPreview = () => {
       
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Image placeholder */}
+          
+          {/* Left - Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -27,15 +29,22 @@ const AboutPreview = () => {
             className="relative"
           >
             <div className="relative w-full aspect-[4/5] max-w-md mx-auto">
+              
               {/* Glow behind */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/20 rounded-3xl blur-[60px] scale-90" />
               
               {/* Image container */}
               <div className="relative w-full h-full rounded-3xl overflow-hidden border border-primary/20 bg-gradient-to-br from-muted to-card">
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                <div className="w-full h-full flex items-center justify-center">
-                  <span className="font-display text-9xl text-primary/20">AZ</span>
-                </div>
+                
+                {/* Real Image */}
+                <img
+                  src={afsalImg}
+                  alt="Afsal Zaini"
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
             </div>
           </motion.div>
@@ -54,9 +63,10 @@ const AboutPreview = () => {
             
             <p className="text-foreground text-lg leading-relaxed mb-8">
               Kerala's business scene is booming! Owners are ambitiously scaling their ventures 
-              beyond local borders, setting their sights on the vast Indian market and the global stage. 
-              This exciting growth spurt, however, can expose knowledge gaps for some entrepreneurs. 
-              Here's where Afsal Zaini, Kerala's acclaimed Business trainer and Management consultant, steps in.
+              beyond local borders, setting their sights on the vast Indian market and the global stage.
+              This exciting growth spurt can also expose knowledge gaps for entrepreneurs.
+              Here’s where Kerala's acclaimed Business Trainer & Management Consultant,
+              <span className="text-white font-semibold"> Afsal Zaini</span>, steps in.
             </p>
             
             <Button asChild size="lg" className="group mb-12">
@@ -78,14 +88,15 @@ const AboutPreview = () => {
                   className="text-center md:text-left"
                 >
                   <div className="font-display text-3xl md:text-4xl font-bold">
-                    <span className="text-white">{stat.value.replace(/[^0-9]/g, '')}</span>
-                    <span className="text-primary">{stat.value.replace(/[0-9]/g, '')}</span>
+                    <span className="text-white">{stat.value.replace(/[^0-9]/g, "")}</span>
+                    <span className="text-primary">{stat.value.replace(/[0-9]/g, "")}</span>
                   </div>
                   <p className="text-foreground text-sm mt-1">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

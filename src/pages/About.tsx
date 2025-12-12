@@ -4,6 +4,7 @@ import { Target, Award, Users, Lightbulb, CheckCircle2 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GlowCard from "@/components/ui/GlowCard";
+import afsalImg from "@/assets/afsal-zaini.jpg";
 
 const stats = [
   { value: "5-7+", label: "Years Experience" },
@@ -49,7 +50,7 @@ const About = () => {
         {/* Hero Section */}
         <section className="pt-32 pb-20 relative overflow-hidden">
           <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[150px]" />
-          
+
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <AnimatedSection>
@@ -61,18 +62,18 @@ const About = () => {
                 </h1>
                 <div className="space-y-6 text-foreground text-lg leading-relaxed">
                   <p>
-                    I am <span className="text-white font-semibold">Afsal Zaini</span>, a Business Growth Coach 
-                    and the founder of Kauzar Academy. With 5-7 years of experience in business development 
-                    and entrepreneurial coaching, I've dedicated my career to transforming businesses and 
+                    I am <span className="text-white font-semibold">Afsal Zaini</span>, a Business Growth Coach
+                    and the founder of Kauzar Academy. With 5-7 years of experience in business development
+                    and entrepreneurial coaching, I've dedicated my career to transforming businesses and
                     the lives of entrepreneurs.
                   </p>
                   <p>
-                    My journey began with a simple belief: <span className="text-white italic">"Business is not small. 
-                    Businessman is small."</span> This philosophy drives everything I do—helping entrepreneurs 
+                    My journey began with a simple belief: <span className="text-white italic">"Business is not small.
+                    Businessman is small."</span> This philosophy drives everything I do—helping entrepreneurs
                     expand their vision, build robust systems, and achieve sustainable growth.
                   </p>
                   <p>
-                    As the CEO of Kauzar Academy, I've created a platform where learning meets transformation, 
+                    As the CEO of Kauzar Academy, I've created a platform where learning meets transformation,
                     offering comprehensive programs in business development, personal growth, and web development.
                   </p>
                 </div>
@@ -82,11 +83,15 @@ const About = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/20 rounded-3xl blur-[60px]" />
                   <div className="relative rounded-3xl overflow-hidden border border-border/50">
-                    <div className="aspect-[4/5] bg-gradient-to-br from-card to-muted flex items-center justify-center">
-                      <span className="font-display text-[150px] text-primary/20">AZ</span>
+                    <div className="aspect-[4/5] bg-card overflow-hidden rounded-3xl">
+                      <img
+                        src={afsalImg}
+                        alt="Afsal Zaini"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                  
+
                   {/* Floating card */}
                   <motion.div
                     animate={{ y: [0, -10, 0] }}
@@ -126,7 +131,7 @@ const About = () => {
         {/* Mission Section */}
         <section className="py-24 relative overflow-hidden">
           <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[150px] -translate-y-1/2" />
-          
+
           <div className="container mx-auto px-6 relative z-10">
             <AnimatedSection className="max-w-4xl mx-auto text-center">
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
@@ -195,7 +200,7 @@ const About = () => {
         {/* Kauzar Academy Section */}
         <section className="py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-          
+
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection className="text-center">
@@ -206,7 +211,7 @@ const About = () => {
                   Kauzar <span className="text-gradient">Academy</span>
                 </h2>
                 <p className="text-foreground text-lg leading-relaxed mb-8">
-                  Kauzar Academy is a personalized platform of excellence providing online & offline learning 
+                  Kauzar Academy is a personalized platform of excellence providing online & offline learning
                   in Web Development, Life Manifesting & Personal Growth, and Business Solutions & Entrepreneurship.
                 </p>
                 <p className="text-2xl font-display italic text-white">

@@ -5,6 +5,11 @@ import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import event1 from "@/assets/event1.jpeg";
+import event2 from "@/assets/event2.jpeg";
+import event3 from "@/assets/event3.jpeg";
+import event4 from "@/assets/event4.jpeg";
+import event5 from "@/assets/event5.jpeg";
 
 const events = [
   {
@@ -14,7 +19,7 @@ const events = [
     date: "Jan 15",
     location: "Kottakkal",
     status: "Available",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=500&fit=crop",
+    image: event1,
   },
   {
     id: 2,
@@ -23,7 +28,7 @@ const events = [
     date: "Feb 10",
     location: "Calicut",
     status: "Available",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=500&fit=crop",
+    image: event2,
   },
   {
     id: 3,
@@ -32,7 +37,7 @@ const events = [
     date: "Mar 5",
     location: "Malappuram",
     status: "Coming Soon",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&h=500&fit=crop",
+    image: event3,
   },
   {
     id: 4,
@@ -41,7 +46,7 @@ const events = [
     date: "Mar 20",
     location: "Online",
     status: "Available",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=500&fit=crop",
+    image: event4,
   },
 ];
 

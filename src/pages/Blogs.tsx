@@ -49,7 +49,7 @@ const newsArticles = [
   },
 ];
 
-const News = () => {
+const Blogs = () => {
   return (
     <>
       <Helmet>
@@ -177,4 +177,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Blogs;

@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Raleway', 'sans-serif'],
+        display: ["Montserrat", "sans-serif"], // Titles
+        sans: ["Inter", "sans-serif"]          // Body text
       },
+      
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

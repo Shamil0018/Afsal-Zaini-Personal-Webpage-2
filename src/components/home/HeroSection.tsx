@@ -109,7 +109,7 @@ const HeroSection = () => {
               />
 
               {/* Image Container */}
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
+              <div className="relative w-106 h-106 md:w-[550px] md:h-[550px] rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
                 <img
                   src={afsalImg}
                   alt="Afsal Zaini"

@@ -6,68 +6,81 @@
 
 @layer base {
   :root {
-    --background: 12 100% 2%;
-    --foreground: 30 20% 85%;
+    /* --- Core (blue) palette --- */
+    --background: 215 35% 8%;          /* deep navy */
+    --foreground: 210 18% 92%;         /* very light text */
 
-    --card: 12 50% 8%;
-    --card-foreground: 30 20% 85%;
+    --card: 215 30% 12%;               /* card background */
+    --card-foreground: 210 18% 92%;
 
-    --popover: 12 50% 6%;
-    --popover-foreground: 30 20% 85%;
+    --popover: 215 28% 10%;
+    --popover-foreground: 210 18% 92%;
 
-    --primary: 25 35% 50%;
+    /* Primary / Accent (blue / cyan) */
+    --primary: 205 95% 54%;            /* vivid blue */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 15 15% 30%;
-    --secondary-foreground: 30 20% 85%;
+    --secondary: 210 12% 30%;
+    --secondary-foreground: 210 18% 92%;
 
-    --muted: 15 20% 20%;
-    --muted-foreground: 30 15% 70%;
+    --muted: 210 18% 14%;
+    --muted-foreground: 210 18% 78%;
 
-    --accent: 25 90% 52%;
+    --accent: 195 95% 58%;             /* cyan-ish accent */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 350 80% 55%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 15 20% 18%;
-    --input: 15 20% 15%;
-    --ring: 25 35% 50%;
+    --border: 215 25% 14%;
+    --input: 215 25% 12%;
+    --ring: 205 95% 54%;
 
     --radius: 0.75rem;
 
-    /* Custom brand colors */
-    --warm-glow: 25 35% 50%;
-    --warm-light: 30 25% 70%;
-    --cta-orange: 22 90% 53%;
-    --deep-brown: 12 50% 9%;
-    --soft-cream: 30 20% 85%;
+    /* Brand/utility blues */
+    --blue-glow: 205 95% 54%;
+    --blue-light: 200 90% 72%;
+    --cta-blue: 205 95% 54%;
+    --deep-navy: 215 30% 8%;
+    --soft-cream: 210 18% 92%; /* kept name but used for light text */
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(12 100% 2%) 0%, hsl(12 60% 11%) 50%, hsl(25 35% 35%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(12 50% 8%) 0%, hsl(12 40% 12%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(25 35% 50% / 0.15) 0%, transparent 70%);
+    --gradient-hero: linear-gradient(135deg, hsl(215 35% 8%) 0%, hsl(215 28% 11%) 50%, hsl(205 95% 54%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(215 30% 12%) 0%, hsl(215 24% 16%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(205 95% 54% / 0.16) 0%, transparent 70%);
 
     /* Typography */
     --font-display: 'Playfair Display', serif;
     --font-body: 'Raleway', sans-serif;
+    
+    .font-montserrat {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .font-inter {
+      font-family: 'Inter', sans-serif;
+    }
+    
 
     /* Shadows */
-    --shadow-glow: 0 0 60px hsl(25 35% 50% / 0.3);
-    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
-    --shadow-button: 0 10px 30px hsl(22 90% 53% / 0.4);
+    --shadow-glow: 0 0 60px hsl(205 95% 54% / 0.28);
+    --shadow-card: 0 25px 50px -12px hsl(210 0% 0% / 0.5);
+    --shadow-button: 0 10px 30px hsl(205 95% 54% / 0.32);
 
-    --sidebar-background: 12 50% 6%;
-    --sidebar-foreground: 30 20% 85%;
-    --sidebar-primary: 25 35% 50%;
+    /* Sidebar */
+    --sidebar-background: 215 30% 10%;
+    --sidebar-foreground: 210 18% 92%;
+    --sidebar-primary: 205 95% 54%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 15 20% 15%;
-    --sidebar-accent-foreground: 30 20% 85%;
-    --sidebar-border: 15 20% 18%;
-    --sidebar-ring: 25 35% 50%;
+    --sidebar-accent: 210 18% 14%;
+    --sidebar-accent-foreground: 210 18% 92%;
+    --sidebar-border: 215 25% 14%;
+    --sidebar-ring: 205 95% 54%;
   }
 }
 
+/* --- base layer tweaks --- */
 @layer base {
   * {
     @apply border-border;
@@ -80,7 +93,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
-    background: linear-gradient(135deg, hsl(12 100% 2%) 0%, hsl(12 60% 11%) 100%);
+    background: var(--gradient-hero);
     min-height: 100vh;
   }
 
@@ -90,6 +103,7 @@
   }
 }
 
+/* --- components & utilities updated to blue --- */
 @layer components {
   .gradient-hero {
     background: var(--gradient-hero);
@@ -104,7 +118,7 @@
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--warm-glow)) 0%, hsl(var(--warm-light)) 100%);
+    background: linear-gradient(135deg, hsl(var(--blue-glow)) 0%, hsl(var(--blue-light)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -116,7 +130,7 @@
 
   .card-hover:hover {
     transform: translateY(-8px);
-    box-shadow: 0 30px 60px -15px hsl(25 35% 50% / 0.25);
+    box-shadow: 0 30px 60px -15px hsl(205 95% 54% / 0.22);
   }
 
   .btn-glow {
@@ -126,7 +140,7 @@
   .btn-glow::before {
     content: '';
     @apply absolute inset-0 opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, hsl(22 90% 60%) 0%, hsl(22 90% 45%) 100%);
+    background: linear-gradient(135deg, hsl(205 95% 60%) 0%, hsl(195 95% 45%) 100%);
   }
 
   .btn-glow:hover::before {
@@ -145,9 +159,9 @@
   .shimmer {
     background: linear-gradient(
       90deg,
-      hsl(var(--warm-glow) / 0) 0%,
-      hsl(var(--warm-glow) / 0.3) 50%,
-      hsl(var(--warm-glow) / 0) 100%
+      hsl(var(--blue-glow) / 0) 0%,
+      hsl(var(--blue-glow) / 0.28) 50%,
+      hsl(var(--blue-glow) / 0) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 3s infinite;
@@ -164,11 +178,12 @@
 
   .glass-effect {
     @apply backdrop-blur-xl;
-    background: hsl(12 50% 6% / 0.8);
-    border: 1px solid hsl(var(--warm-glow) / 0.1);
+    background: hsl(215 30% 10% / 0.72);
+    border: 1px solid hsl(var(--blue-glow) / 0.08);
   }
 }
 
+/* small custom utility */
 @layer utilities {
   .text-balance {
     text-wrap: balance;

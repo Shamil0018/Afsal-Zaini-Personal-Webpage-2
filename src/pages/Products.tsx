@@ -68,38 +68,47 @@ const Products = () => {
           content="Access recorded business courses and self-paced learning modules. Transform your entrepreneurial skills with video-based training from Afsal Zaini."
         />
       </Helmet>
+
       <Layout>
+
         {/* Hero Section */}
-        <section className="pt-32 pb-20 relative overflow-hidden">
+        <section className="pt-32 pb-20 relative overflow-hidden font-inter">
           <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[150px]" />
           
           <div className="container mx-auto px-6 relative z-10">
             <AnimatedSection className="text-center max-w-4xl mx-auto">
-              <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
+
+              <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-inter mb-6">
                 Recorded Courses
               </span>
-              <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-8">
+
+              <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-white mb-8">
                 Self-Paced <span className="text-gradient">Learning</span>
               </h1>
-              <p className="text-foreground text-lg md:text-xl max-w-2xl mx-auto">
+
+              <p className="text-foreground text-lg md:text-xl max-w-2xl mx-auto font-inter">
                 Access premium recorded courses anytime, anywhere. Learn at your own pace 
                 with comprehensive video modules and actionable frameworks.
               </p>
+
             </AnimatedSection>
           </div>
         </section>
 
         {/* Products Grid */}
-        <section className="py-20">
+        <section className="py-20 font-inter">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((product, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
                   <GlowCard className="h-full" glowColor="accent">
+
                     <div className="flex flex-col h-full">
-                      {/* Video preview placeholder */}
+
+                      {/* Video Preview Placeholder */}
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-muted mb-6 group cursor-pointer">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
+
                         <motion.div
                           whileHover={{ scale: 1.1 }}
                           className="absolute inset-0 flex items-center justify-center"
@@ -110,16 +119,18 @@ const Products = () => {
                         </motion.div>
                       </div>
 
-                      <h3 className="font-display text-xl font-semibold text-white mb-3">
+                      {/* Title */}
+                      <h3 className="font-montserrat text-xl font-semibold text-white mb-3">
                         {product.title}
                       </h3>
                       
-                      <p className="text-foreground text-sm leading-relaxed mb-6 flex-grow">
+                      {/* Description */}
+                      <p className="text-foreground text-sm leading-relaxed mb-6 flex-grow font-inter">
                         {product.description}
                       </p>
 
                       {/* Stats */}
-                      <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground font-inter">
                         <div className="flex items-center gap-1.5">
                           <Clock className="w-4 h-4" />
                           {product.duration}
@@ -134,17 +145,20 @@ const Products = () => {
                         </div>
                       </div>
 
-                      {/* Price & CTA */}
+                      {/* Price and CTA */}
                       <div className="flex items-center justify-between pt-6 border-t border-border/30">
-                        <span className="font-display text-2xl font-bold text-gradient">
+                        <span className="font-montserrat text-2xl font-bold text-gradient">
                           {product.price}
                         </span>
-                        <Button size="sm" className="group">
+
+                        <Button size="sm" className="group font-inter">
                           Get Access
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </div>
+
                     </div>
+
                   </GlowCard>
                 </AnimatedSection>
               ))}
@@ -153,12 +167,13 @@ const Products = () => {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-24 relative overflow-hidden font-inter">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
           
           <div className="container mx-auto px-6 relative z-10">
+
             <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-white mb-6">
                 Why Choose Our <span className="text-gradient">Recorded Courses?</span>
               </h2>
             </AnimatedSection>
@@ -171,36 +186,52 @@ const Products = () => {
               ].map((item, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
                   <div className="text-center p-6">
+
                     <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                      <span className="font-display text-2xl font-bold text-primary">{index + 1}</span>
+                      <span className="font-montserrat text-2xl font-bold text-primary">{index + 1}</span>
                     </div>
-                    <h3 className="font-display text-xl font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-foreground">{item.desc}</p>
+
+                    <h3 className="font-montserrat text-xl font-semibold text-white mb-2">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-foreground font-inter">
+                      {item.desc}
+                    </p>
+
                   </div>
                 </AnimatedSection>
               ))}
             </div>
+
           </div>
         </section>
 
         {/* Contact CTA */}
-        <section className="py-20">
+        <section className="py-20 font-inter">
           <div className="container mx-auto px-6">
+
             <AnimatedSection>
               <div className="bg-card/50 border border-border/50 rounded-3xl p-12 text-center">
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+
+                <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white mb-4">
                   Need Help Choosing?
                 </h2>
-                <p className="text-foreground text-lg mb-8 max-w-xl mx-auto">
+
+                <p className="text-foreground text-lg mb-8 max-w-xl mx-auto font-inter">
                   Contact us to find the perfect course for your learning goals.
                 </p>
-                <Button asChild size="lg">
+
+                <Button asChild size="lg" className="font-inter">
                   <Link to="/contact">Contact Us</Link>
                 </Button>
+
               </div>
             </AnimatedSection>
+
           </div>
         </section>
+
       </Layout>
     </>
   );

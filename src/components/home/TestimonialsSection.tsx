@@ -49,9 +49,9 @@ const TestimonialsSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedSection className="text-center mb-16">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
+          {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
             Testimonials
-          </span>
+          </span> */}
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
             Success <span className="text-gradient">Stories</span>
           </h2>

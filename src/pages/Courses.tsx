@@ -94,9 +94,9 @@ const Courses = () => {
           
           <div className="container mx-auto px-6 relative z-10">
             <AnimatedSection className="text-center max-w-4xl mx-auto">
-              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-inter mb-6">
+              {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-inter mb-6">
                 Programs & Courses
-              </span>
+              </span> */}
 
               <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-white mb-8">
                 Transform Your <span className="text-gradient">Journey</span>

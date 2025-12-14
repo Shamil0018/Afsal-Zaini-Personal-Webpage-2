@@ -36,9 +36,9 @@ const CoursesPreview = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-16">
           <AnimatedSection>
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
+            {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
               Programs
-            </span>
+            </span> */}
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
               Featured <span className="text-gradient">Courses</span>
             </h2>

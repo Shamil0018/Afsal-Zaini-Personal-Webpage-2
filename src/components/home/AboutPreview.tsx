@@ -69,12 +69,12 @@ const AboutPreview = () => {
               <span className="text-white font-semibold"> Afsal Zaini</span>, steps in.
             </p>
             
-            <Button asChild size="lg" className="group mb-12">
+            {/* <Button asChild size="lg" className="group mb-12">
               <Link to="/contact">
                 Connect Now
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </Button>
+            </Button> */}
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

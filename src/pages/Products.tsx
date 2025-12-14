@@ -78,9 +78,9 @@ const Products = () => {
           <div className="container mx-auto px-6 relative z-10">
             <AnimatedSection className="text-center max-w-4xl mx-auto">
 
-              <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-inter mb-6">
+              {/* <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-inter mb-6">
                 Recorded Courses
-              </span>
+              </span> */}
 
               <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-white mb-8">
                 Self-Paced <span className="text-gradient">Learning</span>

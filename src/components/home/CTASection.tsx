@@ -43,12 +43,12 @@ const CTASection = () => {
                     </Link>
                   </Button>
                   
-                  <Button asChild variant="outline" size="lg">
+                  {/* <Button asChild variant="outline" size="lg">
                     <a href="https://wa.me/919656669066" target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-2 h-5 w-5" />
                       WhatsApp Me
                     </a>
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </motion.div>

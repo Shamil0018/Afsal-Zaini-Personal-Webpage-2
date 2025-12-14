@@ -24,14 +24,14 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <motion.span
+              {/* <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6"
               >
                 Business Growth Coach
-              </motion.span>
+              </motion.span> */}
 
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -135,20 +135,20 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
+      > */}
+        {/* <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="w-6 h-10 rounded-full border-2 border-foreground/30 flex justify-center pt-2"
         >
           <div className="w-1.5 h-3 bg-foreground/50 rounded-full" />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };

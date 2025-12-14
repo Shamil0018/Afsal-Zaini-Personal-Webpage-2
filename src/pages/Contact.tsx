@@ -47,17 +47,59 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Construct WhatsApp message
-    const message = `Hi Afsal! I'm ${formData.name}.%0A%0ASubject: ${formData.subject}%0A%0A${formData.message}%0A%0AEmail: ${formData.email}%0APhone: ${formData.phone}`;
-    window.open(`https://wa.me/919656669066?text=${message}`, "_blank");
-    
+  
+    // 1️⃣ Send to your backend for admin dashboard storage
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+  
+      if (!res.ok) {
+        toast({
+          title: "Failed!",
+          description: "Could not submit to server.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("API ERROR:", error);
+    }
+  
+    // 2️⃣ WhatsApp message (your existing feature)
+    const whatsappMessage = 
+      `Hi Afsal! I'm ${formData.name}.%0A%0A` +
+      `Subject: ${formData.subject}%0A%0A` +
+      `${formData.message}%0A%0A` +
+      `Email: ${formData.email}%0A` +
+      `Phone: ${formData.phone}`;
+  
+    window.open(`https://wa.me/919656669066?text=${whatsappMessage}`, "_blank");
+  
     toast({
-      title: "Message Prepared!",
-      description: "Your message has been prepared for WhatsApp.",
+      title: "Message Sent!",
+      description: "Your message has been sent, and WhatsApp chat is opened.",
+    });
+  
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
     });
   };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -274,5 +316,12 @@ const Contact = () => {
     </>
   );
 };
+
+// await fetch("/api/contact", {
+//   method: "POST",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify({ name, email, message })
+// });
+
 
 export default Contact;

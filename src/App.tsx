@@ -12,6 +12,8 @@ import Events from "./pages/Events";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import AdminDashboard from "@/pages/admin/index";
+import AdminLogin from "@/pages/admin/login";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,8 @@ const App = () => (
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

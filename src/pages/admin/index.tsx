@@ -1,48 +1,66 @@
 import { useEffect, useState } from "react";
-// import Router from "next/router";
-import { useNavigate } from "react-router-dom";
+import AdminLayout from "./layout";
+import { motion } from "framer-motion";
 
 export default function AdminDashboard() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [contactsCount, setContactsCount] = useState(0);
 
   useEffect(() => {
     fetch("/api/admin/contacts")
       .then(async (res) => {
-        if (res.status === 401) {
-            const navigate = useNavigate();
-
-            navigate("/admin/login");
-        //   Router.push("/admin/login");
-          return;
-        }
-        const json = await res.json();
-        setData(json.contacts);
-        setLoading(false);
+        if (!res.ok) return;
+        const data = await res.json();
+        setContactsCount(data.contacts.length);
       });
   }, []);
 
-  async function logout() {
-    await fetch("/api/admin/logout", { method: "POST" });
-    const navigate = useNavigate();
-
-    navigate("/admin/login");
-  }
-
-  if (loading) return <p>Loading...</p>;
+  const stats = [
+    { title: "Total Contacts", value: contactsCount },
+    { title: "Events", value: 0 },
+    { title: "Courses", value: 0 },
+  ];
 
   return (
-    <div>
-      <h1>Contact Submissions</h1>
-      <button onClick={logout}>Logout</button>
-      {data.map((c) => (
-        <div key={c._id} style={{ border: "1px solid #ddd", margin: "10px" }}>
-          <p><strong>Name:</strong> {c.name}</p>
-          <p><strong>Email:</strong> {c.email}</p>
-          <p><strong>Message:</strong> {c.message}</p>
-          <p><small>{new Date(c.createdAt).toLocaleString()}</small></p>
+    <AdminLayout>
+      <motion.h1
+        className="text-4xl font-bold mb-8"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        Welcome Back, Admin 👋
+      </motion.h1>
+
+      {/* Dashboard Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {stats.map((stat, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: idx * 0.15 }}
+            className="p-6 rounded-2xl bg-card border border-border/50 shadow-xl"
+          >
+            <h3 className="text-xl font-semibold mb-2">{stat.title}</h3>
+            <p className="text-5xl font-bold text-gradient">{stat.value}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Placeholder for future widgets */}
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold mb-4">Quick Actions</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <button className="p-6 rounded-2xl bg-primary/20 border border-primary/30 hover:bg-primary/30 transition">
+            Add Event
+          </button>
+          <button className="p-6 rounded-2xl bg-primary/20 border border-primary/30 hover:bg-primary/30 transition">
+            Add Course
+          </button>
+          <button className="p-6 rounded-2xl bg-primary/20 border border-primary/30 hover:bg-primary/30 transition">
+            Edit About Page
+          </button>
         </div>
-      ))}
-    </div>
+      </div>
+    </AdminLayout>
   );
 }

@@ -14,6 +14,10 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "@/pages/admin/index";
 import AdminLogin from "@/pages/admin/login";
+import AdminAbout from "@/pages/admin/about";
+import AdminEvents from "@/pages/admin/events";
+import AdminCourses from "@/pages/admin/courses";
+import AdminContacts from "@/pages/admin/contacts";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +39,10 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/login" element={<AdminLogin />} />
+            {/* <Route path="/admin/about" element={<AdminAbout />} />
+            <Route path="/admin/events" element={<AdminEvents />} />
+            <Route path="/admin/courses" element={<AdminCourses />} />
+            <Route path="/admin/contacts" element={<AdminContacts />} /> */}
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

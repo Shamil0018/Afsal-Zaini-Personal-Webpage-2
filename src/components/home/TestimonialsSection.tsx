@@ -42,81 +42,100 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[150px]" />
+    <section className="py-28 relative overflow-hidden bg-background">
+      {/* Background Ambience */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-primary/5 rounded-full blur-[180px] -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <AnimatedSection className="text-center mb-16">
-          {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-            Testimonials
-          </span> */}
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-            Success <span className="text-gradient">Stories</span>
+        <AnimatedSection className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-3 mb-6"
+          >
+            <div className="h-[1px] w-8 bg-primary/60" />
+            <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+              The Transformational Impact
+            </span>
+            <div className="h-[1px] w-8 bg-primary/60" />
+          </motion.div>
+
+          <h2 className="font-display text-5xl md:text-6xl font-bold text-white">
+            Voices of <span className="text-gradient">Victory</span>
           </h2>
         </AnimatedSection>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative bg-white/[0.02] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 md:p-20 shadow-2xl">
+            {/* Absolute Decorative Quote */}
+            <Quote className="absolute top-10 right-10 w-24 h-24 text-primary/10 -z-10" />
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 className="text-center"
               >
-                <Quote className="w-16 h-16 text-primary/30 mx-auto mb-8" />
-                
-                <p className="font-display text-2xl md:text-3xl text-white leading-relaxed mb-10 italic">
-                  "{testimonials[currentIndex].quote}"
+                <div className="mb-10 flex justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+                    <Quote className="w-8 h-8 text-primary" />
+                  </div>
+                </div>
+
+                <p className="font-display text-3xl md:text-4xl text-white leading-relaxed mb-12 italic font-light tracking-tight px-4 flex flex-col items-center">
+                  <span className="max-w-3xl">"{testimonials[currentIndex].quote}"</span>
                 </p>
-                
-                <div>
-                  <p className="font-display text-xl font-semibold text-white">
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <p className="font-display text-2xl font-bold text-white mb-2">
                     {testimonials[currentIndex].name}
                   </p>
-                  <p className="text-foreground">
-                    {testimonials[currentIndex].role} • {testimonials[currentIndex].location}
+                  <p className="text-primary text-sm font-medium tracking-widest uppercase opacity-80">
+                    {testimonials[currentIndex].role} — {testimonials[currentIndex].location}
                   </p>
-                </div>
+                </motion.div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation */}
-            <div className="flex justify-center items-center gap-4 mt-12">
+            {/* Navigation Controls Refined */}
+            <div className="flex justify-center items-center gap-8 mt-16 pt-8 border-t border-white/5">
               <motion.button
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ x: -5, backgroundColor: "rgba(255,255,255,0.05)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={prev}
-                className="w-12 h-12 rounded-full border border-border/50 flex items-center justify-center text-foreground hover:text-white hover:border-primary/50 transition-colors"
+                className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-white transition-colors"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-6 h-6" />
               </motion.button>
-              
-              <div className="flex gap-2">
+
+              <div className="flex gap-3">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? "bg-primary w-8"
-                        : "bg-foreground/30 hover:bg-foreground/50"
-                    }`}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${index === currentIndex
+                        ? "bg-primary w-12"
+                        : "bg-white/10 w-3 hover:bg-white/30"
+                      }`}
                   />
                 ))}
               </div>
-              
+
               <motion.button
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ x: 5, backgroundColor: "rgba(255,255,255,0.05)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={next}
-                className="w-12 h-12 rounded-full border border-border/50 flex items-center justify-center text-foreground hover:text-white hover:border-primary/50 transition-colors"
+                className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-white transition-colors"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-6 h-6" />
               </motion.button>
             </div>
           </div>

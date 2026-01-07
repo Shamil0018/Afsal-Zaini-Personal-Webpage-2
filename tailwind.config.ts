@@ -14,10 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Montserrat", "sans-serif"], // Titles
+        display: ["Playfair Display", "sans-serif"], // Titles
         sans: ["Inter", "sans-serif"]          // Body text
       },
-      
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

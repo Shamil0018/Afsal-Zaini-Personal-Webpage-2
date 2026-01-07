@@ -49,7 +49,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     // 1️⃣ Send to your backend for admin dashboard storage
     try {
       const res = await fetch("/api/contact", {
@@ -63,7 +63,7 @@ const Contact = () => {
           message: formData.message,
         }),
       });
-  
+
       if (!res.ok) {
         toast({
           title: "Failed!",
@@ -74,22 +74,22 @@ const Contact = () => {
     } catch (error) {
       console.error("API ERROR:", error);
     }
-  
+
     // 2️⃣ WhatsApp message (your existing feature)
-    const whatsappMessage = 
+    const whatsappMessage =
       `Hi Afsal! I'm ${formData.name}.%0A%0A` +
       `Subject: ${formData.subject}%0A%0A` +
       `${formData.message}%0A%0A` +
       `Email: ${formData.email}%0A` +
       `Phone: ${formData.phone}`;
-  
+
     window.open(`https://wa.me/919656669066?text=${whatsappMessage}`, "_blank");
-  
+
     toast({
       title: "Message Sent!",
       description: "Your message has been sent, and WhatsApp chat is opened.",
     });
-  
+
     // Reset form
     setFormData({
       name: "",
@@ -99,7 +99,7 @@ const Contact = () => {
       message: "",
     });
   };
-  
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -116,199 +116,216 @@ const Contact = () => {
       </Helmet>
       <Layout>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 relative overflow-hidden">
-          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[150px]" />
-          
+        <section className="pt-40 pb-20 relative overflow-hidden bg-background">
+          <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[180px] -z-10" />
+
           <div className="container mx-auto px-6 relative z-10">
             <AnimatedSection className="text-center max-w-4xl mx-auto">
-              {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                Get in Touch
-              </span> */}
-              <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-8">
-                Let's Start Your <span className="text-gradient">Transformation</span>
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center gap-3 mb-6"
+              >
+                <div className="h-[1px] w-8 bg-primary/60" />
+                <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+                  Connect & Scale
+                </span>
+                <div className="h-[1px] w-8 bg-primary/60" />
+              </motion.div>
+
+              <h1 className="font-display text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
+                Let's Start Your <br />
+                <span className="text-gradient">Transformation</span>
               </h1>
-              <p className="text-foreground text-lg md:text-xl max-w-2xl mx-auto">
-                Ready to take your business to the next level? I'm here to help. 
-                Reach out and let's discuss your goals.
+              <p className="text-slate-400 text-xl font-body font-light max-w-2xl mx-auto leading-relaxed">
+                Ready to move from chaos to <span className="text-white font-medium">clarity</span>? Reach out and let's architect the future of your business.
               </p>
             </AnimatedSection>
           </div>
         </section>
 
         {/* Contact Content */}
-        <section className="py-20">
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16">
+            <div className="grid lg:grid-cols-12 gap-16 md:gap-24">
               {/* Contact Info */}
-              <AnimatedSection>
-                <div className="space-y-8">
-                  <div>
-                    <h2 className="font-display text-3xl font-bold text-white mb-6">
-                      Contact Information
-                    </h2>
-                    <p className="text-foreground text-lg">
-                      Feel free to reach out through any of these channels. 
-                      I typically respond within 24 hours.
-                    </p>
-                  </div>
+              <div className="lg:col-span-12 xl:col-span-5">
+                <AnimatedSection>
+                  <div className="space-y-10">
+                    <div>
+                      <h2 className="font-display text-4xl font-bold text-white mb-6 tracking-tight">
+                        Direct <span className="text-primary">Channels</span>
+                      </h2>
+                      <p className="text-slate-400 text-lg font-body font-light leading-relaxed">
+                        Select your preferred method of communication. We prioritize response efficiency for strategic inquiries.
+                      </p>
+                    </div>
 
-                  <div className="space-y-6">
-                    {contactInfo.map((info, index) => (
-                      <motion.div
-                        key={index}
-                        whileHover={{ x: 8 }}
-                        className="flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border/30"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <info.icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="font-display font-semibold text-white mb-1">
-                            {info.title}
-                          </h3>
-                          {info.details.map((detail, dIndex) => (
-                            <p key={dIndex} className="text-foreground">
-                              {info.action ? (
-                                <a href={info.action} className="hover:text-primary transition-colors">
-                                  {detail}
-                                </a>
-                              ) : (
-                                detail
-                              )}
-                            </p>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* WhatsApp CTA */}
-                  <motion.a
-                    href="https://wa.me/919656669066"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.02 }}
-                    className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-[#25D366] text-white font-semibold text-lg"
-                  >
-                    <MessageCircle className="w-6 h-6" />
-                    Chat on WhatsApp
-                  </motion.a>
-
-                  {/* Social Links */}
-                  <div>
-                    <h3 className="font-display font-semibold text-white mb-4">Follow Me</h3>
-                    <div className="flex gap-4">
-                      {socialLinks.map((social, index) => (
-                        <motion.a
+                    <div className="space-y-6">
+                      {contactInfo.map((info, index) => (
+                        <motion.div
                           key={index}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.1, y: -2 }}
-                          className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                          aria-label={social.label}
+                          whileHover={{ x: 8 }}
+                          className="group flex items-start gap-6 p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-sm transition-all duration-500 hover:border-primary/20"
                         >
-                          <social.icon size={22} />
-                        </motion.a>
+                          <div className="w-14 h-14 rounded-2xl bg-primary/5 border border-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
+                            <info.icon className="w-6 h-6 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-display font-bold text-white text-xl mb-2">
+                              {info.title}
+                            </h3>
+                            {info.details.map((detail, dIndex) => (
+                              <p key={dIndex} className="text-slate-400 font-body text-base group-hover:text-slate-200 transition-colors">
+                                {info.action ? (
+                                  <a href={info.action} className="hover:text-primary transition-colors">
+                                    {detail}
+                                  </a>
+                                ) : (
+                                  detail
+                                )}
+                              </p>
+                            ))}
+                          </div>
+                        </motion.div>
                       ))}
                     </div>
+
+                    {/* WhatsApp CTA */}
+                    <motion.a
+                      href="https://wa.me/919656669066"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="flex items-center justify-center gap-4 w-full h-16 rounded-[2rem] bg-emerald-500 text-white font-bold text-lg shadow-xl shadow-emerald-500/20"
+                    >
+                      <MessageCircle className="w-6 h-6" />
+                      Priority WhatsApp Line
+                    </motion.a>
+
+                    {/* Social Links */}
+                    <div className="pt-8 border-t border-white/5">
+                      <h3 className="font-display font-medium text-slate-500 text-xs uppercase tracking-widest mb-6">Network Reach</h3>
+                      <div className="flex gap-4">
+                        {socialLinks.map((social, index) => (
+                          <motion.a
+                            key={index}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ y: -5, backgroundColor: "rgba(255,255,255,0.05)" }}
+                            className="w-12 h-12 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-slate-400 hover:text-primary transition-all duration-300"
+                            aria-label={social.label}
+                          >
+                            <social.icon size={20} />
+                          </motion.a>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </AnimatedSection>
+                </AnimatedSection>
+              </div>
 
               {/* Contact Form */}
-              <AnimatedSection delay={0.2}>
-                <div className="bg-card/50 border border-border/50 rounded-3xl p-8 md:p-10">
-                  <h2 className="font-display text-2xl font-bold text-white mb-6">
-                    Send a Message
-                  </h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                          Your Name
-                        </label>
-                        <Input
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          placeholder="John Doe"
-                          required
-                          className="bg-muted border-border/50"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                          Email Address
-                        </label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="john@example.com"
-                          required
-                          className="bg-muted border-border/50"
-                        />
-                      </div>
-                    </div>
+              <div className="lg:col-span-12 xl:col-span-7">
+                <AnimatedSection delay={0.2}>
+                  <div className="bg-white/[0.02] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:32px_32px] -z-10" />
 
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                          Phone Number
-                        </label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="+91 98765 43210"
-                          className="bg-muted border-border/50"
-                        />
+                    <h2 className="font-display text-3xl font-black text-white mb-10 tracking-tight">
+                      Blueprint <span className="text-gradient">Enquiry</span>
+                    </h2>
+
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                      <div className="grid sm:grid-cols-2 gap-8">
+                        <div>
+                          <label htmlFor="name" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
+                            Full Name
+                          </label>
+                          <Input
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Ameen"
+                            required
+                            className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="email" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
+                            Strategic Email
+                          </label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="ameen@founder.com"
+                            required
+                            className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
+                          />
+                        </div>
                       </div>
+
+                      <div className="grid sm:grid-cols-2 gap-8">
+                        <div>
+                          <label htmlFor="phone" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
+                            Direct Line
+                          </label>
+                          <Input
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="+91 9656 66 90 66"
+                            className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="subject" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
+                            Scaling Target
+                          </label>
+                          <Input
+                            id="subject"
+                            name="subject"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            placeholder="System Mastery Plan"
+                            required
+                            className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
+                          />
+                        </div>
+                      </div>
+
                       <div>
-                        <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                          Subject
+                        <label htmlFor="message" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
+                          Current Bottleneck
                         </label>
-                        <Input
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
+                        <Textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
                           onChange={handleChange}
-                          placeholder="Business Consultation"
+                          placeholder="Describe the complexity you're currently navigating..."
+                          rows={6}
                           required
-                          className="bg-muted border-border/50"
+                          className="bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-[2rem] p-6 resize-none"
                         />
                       </div>
-                    </div>
 
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                        Your Message
-                      </label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="Tell me about your business goals..."
-                        rows={5}
-                        required
-                        className="bg-muted border-border/50 resize-none"
-                      />
-                    </div>
-
-                    <Button type="submit" size="lg" className="w-full group">
-                      <Send className="mr-2 h-5 w-5" />
-                      Send via WhatsApp
-                    </Button>
-                  </form>
-                </div>
-              </AnimatedSection>
+                      <Button type="submit" size="lg" className="w-full h-16 rounded-[2rem] text-lg font-bold group">
+                        <Send className="mr-3 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        Initialize Scale Audit
+                      </Button>
+                    </form>
+                  </div>
+                </AnimatedSection>
+              </div>
             </div>
           </div>
         </section>
@@ -316,12 +333,5 @@ const Contact = () => {
     </>
   );
 };
-
-// await fetch("/api/contact", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ name, email, message })
-// });
-
 
 export default Contact;

@@ -1,224 +1,182 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Users, Clock, ArrowRight, Mic, Video, Building } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Calendar, MapPin, ArrowUpRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import GlowCard from "@/components/ui/GlowCard";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
-const eventTypes = [
-  {
-    icon: Mic,
-    title: "Business Growth Workshops",
-    description: "Intensive hands-on workshops focused on scaling your business with proven strategies and frameworks.",
-    format: "Offline",
-    duration: "Full Day",
-  },
-  {
-    icon: Building,
-    title: "Startup Bootcamps",
-    description: "Comprehensive bootcamps for aspiring entrepreneurs to validate, plan, and launch their ventures.",
-    format: "Offline",
-    duration: "2-3 Days",
-  },
-  {
-    icon: Users,
-    title: "Entrepreneur Training",
-    description: "In-depth training sessions covering all aspects of entrepreneurship and business management.",
-    format: "Offline",
-    duration: "Multiple Sessions",
-  },
-  {
-    icon: Video,
-    title: "Online Webinars",
-    description: "Live interactive webinars on specific business topics with Q&A sessions.",
-    format: "Online",
-    duration: "2-3 Hours",
-  },
-  {
-    icon: Mic,
-    title: "Sales & Marketing Workshops",
-    description: "Focused workshops on improving sales techniques and marketing strategies for growth.",
-    format: "Hybrid",
-    duration: "Half Day",
-  },
-];
+import event1 from "@/assets/event1.jpeg";
+import event2 from "@/assets/event2.jpeg";
+import event3 from "@/assets/event3.jpeg";
+import event4 from "@/assets/event4.jpeg";
+// import event5 from "@/assets/event5.jpeg"; // Imported in user code but unused in array
 
-const upcomingEvents = [
+const events = [
   {
-    title: "Business Growth Masterclass 2024",
-    date: "Coming Soon",
-    location: "Malappuram",
-    spots: "Limited Seats",
-  },
-  {
-    title: "Startup Weekend Bootcamp",
-    date: "Coming Soon",
+    id: 1,
+    title: "Business Growth Mastery",
+    type: "Workshop",
+    date: "Jan 15",
     location: "Kottakkal",
-    spots: "30 Seats",
+    status: "Available",
+    image: event1,
   },
   {
-    title: "Online Marketing Webinar",
-    date: "Coming Soon",
-    location: "Online (Zoom)",
-    spots: "100 Seats",
+    id: 2,
+    title: "Startup Bootcamp",
+    type: "Bootcamp",
+    date: "Feb 10",
+    location: "Calicut",
+    status: "Available",
+    image: event2,
+  },
+  {
+    id: 3,
+    title: "Sales & Marketing Workshop",
+    type: "Workshop",
+    date: "Mar 5",
+    location: "Malappuram",
+    status: "Coming Soon",
+    image: event3,
+  },
+  {
+    id: 4,
+    title: "Entrepreneur Mindset Training",
+    type: "Webinar",
+    date: "Mar 20",
+    location: "Online",
+    status: "Available",
+    image: event4,
   },
 ];
 
 const Events = () => {
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      dragFree: true,
+    },
+    [Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })]
+  );
+
   return (
     <>
       <Helmet>
         <title>Events & Workshops | Business Training - Afsal Zaini</title>
         <meta
           name="description"
-          content="Join business growth workshops, startup bootcamps, entrepreneur training, and webinars conducted by Afsal Zaini. Transform your business skills."
+          content="Join business growth workshops, startup bootcamps, and entrepreneur training conducted by Afsal Zaini. Transform your business skills through immersive events."
         />
       </Helmet>
+
       <Layout>
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 relative overflow-hidden">
-          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[150px]" />
-          
+        <section className="pt-40 pb-28 relative overflow-hidden bg-background">
+          {/* Background glow */}
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -z-10" />
+
           <div className="container mx-auto px-6 relative z-10">
-            <AnimatedSection className="text-center max-w-4xl mx-auto">
-              {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                Events & Workshops
-              </span> */}
-              <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-8">
-                Learn, Network & <span className="text-gradient">Grow</span>
-              </h1>
-              <p className="text-foreground text-lg md:text-xl max-w-2xl mx-auto">
-                Join our transformative events and workshops designed to accelerate 
-                your business growth and entrepreneurial journey.
-              </p>
-            </AnimatedSection>
-          </div>
-        </section>
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-20">
+              <AnimatedSection>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3 mb-6"
+                >
+                  <div className="h-[1px] w-8 bg-primary/60" />
+                  <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+                    Impact & Insights
+                  </span>
+                </motion.div>
 
-        {/* Event Types */}
-        <section className="py-20">
-          <div className="container mx-auto px-6">
-            <AnimatedSection className="text-center mb-16">
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-                Types of <span className="text-gradient">Events</span>
-              </h2>
-              <p className="text-foreground text-lg max-w-2xl mx-auto">
-                From intensive workshops to online webinars, choose the format that works for you
-              </p>
-            </AnimatedSection>
+                <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6">
+                  Upcoming & <br className="hidden md:block" />
+                  <span className="text-gradient">Previous Events</span>
+                </h2>
+                <p className="text-slate-400 text-xl font-light max-w-2xl leading-relaxed">
+                  Experience the energy of transformation at our <span className="text-white font-medium">regional workshops</span> and flagship training sessions.
+                </p>
+              </AnimatedSection>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {eventTypes.map((event, index) => (
-                <AnimatedSection key={index} delay={index * 0.1}>
-                  <GlowCard className="h-full">
-                    <div className="flex flex-col h-full">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                        <event.icon className="w-8 h-8 text-primary" />
-                      </div>
-                      
-                      <h3 className="font-display text-xl font-semibold text-white mb-3">
-                        {event.title}
-                      </h3>
-                      
-                      <p className="text-foreground text-sm leading-relaxed mb-6 flex-grow">
-                        {event.description}
-                      </p>
-
-                      <div className="flex items-center gap-4 text-sm">
-                        <span className="px-3 py-1 rounded-full bg-primary/10 text-primary">
-                          {event.format}
-                        </span>
-                        <span className="text-muted-foreground flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {event.duration}
-                        </span>
-                      </div>
-                    </div>
-                  </GlowCard>
-                </AnimatedSection>
-              ))}
+              <AnimatedSection delay={0.2}>
+                <Button asChild variant="outline" size="lg" className="border-white/10 hover:bg-white/5 group">
+                  <Link to="/contact">
+                    Host an Event
+                    <ArrowUpRight className="ml-2 h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </Link>
+                </Button>
+              </AnimatedSection>
             </div>
-          </div>
-        </section>
 
-        {/* Upcoming Events */}
-        <section className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-          
-          <div className="container mx-auto px-6 relative z-10">
-            <AnimatedSection className="text-center mb-16">
-              {/* <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-4">
-                Mark Your Calendar
-              </span> */}
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white">
-                Upcoming <span className="text-gradient">Events</span>
-              </h2>
-            </AnimatedSection>
-
-            <div className="max-w-4xl mx-auto space-y-6">
-              {upcomingEvents.map((event, index) => (
-                <AnimatedSection key={index} delay={index * 0.1}>
+            <div className="overflow-hidden cursor-grab active:cursor-grabbing px-2" ref={emblaRef}>
+              <div className="flex gap-8">
+                {events.map((event, index) => (
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="bg-card/50 border border-border/50 rounded-2xl p-6 md:p-8"
+                    key={event.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="relative flex-shrink-0 w-80 md:w-[400px]"
                   >
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                      <div>
-                        <h3 className="font-display text-2xl font-semibold text-white mb-4">
-                          {event.title}
-                        </h3>
-                        <div className="flex flex-wrap gap-4 text-sm text-foreground">
-                          <span className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4 text-primary" />
-                            {event.date}
-                          </span>
-                          <span className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-primary" />
-                            {event.location}
-                          </span>
-                          <span className="flex items-center gap-2">
-                            <Users className="w-4 h-4 text-primary" />
-                            {event.spots}
-                          </span>
+                    <div className="group relative bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-primary/20">
+                      {/* Image Section */}
+                      <div className="relative aspect-[4/5] overflow-hidden">
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
+
+                        {/* Floating Meta */}
+                        <div className="absolute top-6 left-6 right-6 flex justify-between items-center z-20">
+                          <div className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/10">
+                            <span className="text-primary text-xs font-bold uppercase tracking-widest">{event.type}</span>
+                          </div>
+
+                          <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
+                            <div className={`w-2 h-2 rounded-full ${event.status === "Available" ? "bg-green-500 animate-pulse" : "bg-slate-500"}`} />
+                            <span className="text-white text-[10px] font-semibold uppercase tracking-tighter">{event.status}</span>
+                          </div>
+                        </div>
+
+                        {/* Content Overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+                          <div className="flex items-center gap-6 text-sm text-slate-300 mb-4 font-light">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-primary" />
+                              <span>{event.date}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <MapPin className="w-4 h-4 text-primary" />
+                              <span>{event.location}</span>
+                            </div>
+                          </div>
+
+                          <h3 className="font-display text-2xl font-bold text-white group-hover:text-primary transition-colors duration-300">
+                            {event.title}
+                          </h3>
+
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            whileHover={{ opacity: 1, y: 0 }}
+                            className="mt-6 pt-6 border-t border-white/10 flex justify-between items-center scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"
+                          >
+                            <span className="text-xs text-slate-400 font-medium uppercase tracking-widest">Explore Event</span>
+                            <ArrowUpRight className="w-5 h-5 text-primary" />
+                          </motion.div>
                         </div>
                       </div>
-                      <Button className="group whitespace-nowrap">
-                        Register Interest
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
                     </div>
                   </motion.div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Host Event CTA */}
-        <section className="py-20">
-          <div className="container mx-auto px-6">
-            <AnimatedSection>
-              <div className="relative rounded-3xl overflow-hidden">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-accent/50 rounded-3xl blur-xl opacity-50" />
-                <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-3xl p-12 md:p-16 text-center">
-                  <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-                    Want to Host a <span className="text-gradient">Workshop?</span>
-                  </h2>
-                  <p className="text-foreground text-lg mb-10 max-w-2xl mx-auto">
-                    Bring transformative business training to your organization or community. 
-                    Let's discuss how we can collaborate.
-                  </p>
-                  <Button asChild size="lg" className="group">
-                    <Link to="/contact">
-                      Get in Touch
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </div>
+                ))}
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </section>
       </Layout>

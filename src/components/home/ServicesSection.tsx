@@ -1,78 +1,97 @@
 import { motion } from "framer-motion";
-import { Target, TrendingUp, Users, Lightbulb, Briefcase, Rocket } from "lucide-react";
+import { UserCheck, Compass, Layout, Users, BarChart3, ShieldCheck } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GlowCard from "@/components/ui/GlowCard";
 
-const services = [
+const impactAreas = [
   {
-    icon: TrendingUp,
-    title: "Business Growth Strategy",
-    description: "Scale your business with proven strategies for revenue growth and market expansion.",
+    icon: UserCheck,
+    title: "Reduce owner dependency",
+    description: "Move from being the operator to the visionary by building systems that function without your constant presence.",
   },
   {
-    icon: Target,
-    title: "Strategic Consulting",
-    description: "One-on-one guidance to solve complex business challenges and achieve your goals.",
+    icon: Compass,
+    title: "Build leadership clarity",
+    description: "Define clear paths and decision-making frameworks that empower your team to lead with confidence.",
+  },
+  {
+    icon: Layout,
+    title: "Install working systems",
+    description: "Operationalize Sales, Ops, Finance, and Team management with custom-built, practical implementation systems.",
   },
   {
     icon: Users,
-    title: "Team Development",
-    description: "Build high-performing teams that drive results and foster innovation.",
+    title: "Create accountability-driven teams",
+    description: "Build a culture where ownership is natural and teams are responsible for results, not just tasks.",
   },
   {
-    icon: Lightbulb,
-    title: "Startup Mentoring",
-    description: "Launch your venture with confidence using structured frameworks and expert guidance.",
-  },
-  {
-    icon: Briefcase,
-    title: "Business Systems",
-    description: "Create efficient operational systems that scale with your growing business.",
-  },
-  {
-    icon: Rocket,
-    title: "Life Transformation",
-    description: "Align personal growth with business success for holistic transformation.",
-  },
+    icon: BarChart3,
+    title: "Prepare for long-term scalability",
+    description: "Set the structural foundation required to scale your business sustainably and predictably.",
+  }
 ];
 
 const ServicesSection = () => {
   return (
-    <section className="py-24 relative">
+    <section className="py-24 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -translate-y-1/2 -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">
         <AnimatedSection className="text-center mb-16">
-          {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-            What I Do
-          </span> */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center gap-3 mb-6"
+          >
+            <div className="h-[1px] w-8 bg-primary/60" />
+            <span className="text-xs font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+              Impact & Value
+            </span>
+            <div className="h-[1px] w-8 bg-primary/60" />
+          </motion.div>
+
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-            Services & <span className="text-gradient">Expertise</span>
+            What I <span className="text-gradient">Do</span>
           </h2>
-          <p className="text-foreground text-lg max-w-2xl mx-auto">
-            Comprehensive solutions to transform your business and personal growth journey
+
+          <p className="font-display text-xl md:text-2xl text-slate-100 italic font-light max-w-3xl mx-auto leading-relaxed">
+            "Business Transformation Through <span className="text-primary font-normal">FRAMEWORKS</span>, not THEORY"
           </p>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+          {impactAreas.map((item, index) => (
             <AnimatedSection key={index} delay={index * 0.1}>
-              <GlowCard className="h-full">
-                <div className="flex flex-col h-full">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <service.icon className="w-7 h-7 text-primary" />
+              <GlowCard className="h-full border-white/5 bg-white/[0.02] backdrop-blur-sm group hover:border-primary/20 transition-all duration-500">
+                <div className="flex flex-col h-full p-1">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-500">
+                    <item.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-white mb-3">
-                    {service.title}
+                  <h3 className="font-display text-xl font-bold text-white mb-3 leading-tight">
+                    {item.title}
                   </h3>
-                  <p className="text-foreground text-sm leading-relaxed">
-                    {service.description}
+                  <p className="text-slate-400 text-base leading-relaxed font-light">
+                    {item.description}
                   </p>
                 </div>
               </GlowCard>
             </AnimatedSection>
           ))}
+
+          {/* Special CTA Card */}
+          <AnimatedSection delay={0.5} className="lg:col-span-1">
+            <div className="h-full rounded-3xl p-8 bg-gradient-to-br from-primary/20 to-accent/10 border border-primary/20 flex flex-col justify-center text-center shadow-2xl">
+              <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
+              <p className="text-white text-lg font-display font-medium mb-2 italic">
+                "No fluff. No over-theory."
+              </p>
+              <p className="text-slate-200 text-base font-light leading-relaxed">
+                Only execution-focused clarity.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

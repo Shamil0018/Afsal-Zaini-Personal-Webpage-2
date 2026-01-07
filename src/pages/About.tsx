@@ -4,7 +4,7 @@ import { Target, Award, Users, Lightbulb, CheckCircle2 } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GlowCard from "@/components/ui/GlowCard";
-import afsalImg from "@/assets/afsal-zaini.jpg";
+import image7 from "@/assets/image 7.png";
 
 const stats = [
   { value: "5-7+", label: "Years Experience" },
@@ -40,100 +40,107 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Afsal Zaini | Business Growth Coach Journey</title>
+        <title>About Afsal Zaini | Business Structure & System Coach</title>
         <meta
           name="description"
-          content="Learn about Afsal Zaini's journey as a Business Growth Coach and the mission behind Kauzar Academy. 5-7 years of experience transforming entrepreneurs."
+          content="Learn about Afsal Zaini, Business Structure & System Coach. Creator of Business FrameX and CEO of Kauzar Academy. Focused on owner liberation and system-driven growth."
         />
       </Helmet>
 
       <Layout>
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 relative overflow-hidden font-inter">
-          <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[150px]" />
+        {/* WHO AM I Hero Section */}
+        <section className="pt-40 pb-20 relative overflow-hidden bg-background">
+          <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[180px] -z-10" />
 
           <div className="container mx-auto px-6 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-12 gap-16 items-center">
 
               {/* LEFT SIDE */}
-              <AnimatedSection>
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6 font-inter">
-                  About Me
-                </span>
+              <div className="lg:col-span-7">
+                <AnimatedSection>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-3 mb-6"
+                  >
+                    <div className="h-[1px] w-8 bg-primary/60" />
+                    <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+                      The Architect of Systems
+                    </span>
+                  </motion.div>
 
-                <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-white mb-8">
-                  The Story Behind the <span className="text-gradient">Vision</span>
-                </h1>
+                  <h1 className="font-display text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-tight">
+                    The Story Behind the <br />
+                    <span className="text-gradient">Vision</span>
+                  </h1>
 
-                <div className="space-y-6 text-foreground text-lg leading-relaxed font-inter">
-                  <p>
-                    I am <span className="text-white font-semibold">Afsal Zaini</span>, a Business Growth Coach
-                    and the founder of Kauzar Academy. With 5-7 years of experience in business development
-                    and entrepreneurial coaching, I've dedicated my career to transforming businesses and
-                    the lives of entrepreneurs.
-                  </p>
+                  <div className="space-y-6 text-slate-400 text-lg md:text-xl leading-relaxed font-body font-light">
+                    <p>
+                      I’m not a motivational speaker. I’m a <span className="text-white font-medium underline decoration-primary/30 underline-offset-8">Business Structure & System Coach</span>.
+                    </p>
 
-                  <p>
-                    My journey began with a simple belief:{" "}
-                    <span className="text-white italic">"Business is not small. Businessman is small."</span>
-                    This philosophy drives everything I do—helping entrepreneurs expand their vision,
-                    build robust systems, and achieve sustainable growth.
-                  </p>
+                    <p>
+                      Over the years, I’ve worked with MSME, B2B, and Service Sector owners to move them from <span className="text-slate-200">"Everything depends on me"</span> to a business that runs with clarity, systems, and accountable teams.
+                    </p>
 
-                  <p>
-                    As the CEO of Kauzar Academy, I've created a platform where learning meets transformation,
-                    offering comprehensive programs in business development, personal growth, and web development.
-                  </p>
-                </div>
-              </AnimatedSection>
+                    <p className="italic text-slate-300 border-l-2 border-primary/20 pl-6 py-2">
+                      As the CEO of Kauzar Academy, I designed Business FrameX — a practical framework focused on one goal: Owner Liberation.
+                    </p>
+                  </div>
+                </AnimatedSection>
+              </div>
 
               {/* RIGHT SIDE (IMAGE) */}
-              <AnimatedSection delay={0.2}>
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/20 rounded-3xl blur-[60px]" />
+              <div className="lg:col-span-5">
+                <AnimatedSection delay={0.2}>
+                  <div className="relative">
+                    <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-3xl -z-10" />
 
-                  <div className="relative rounded-3xl overflow-hidden border border-border/50">
-                    <div className="aspect-[4/5] bg-card overflow-hidden rounded-3xl">
-                      <img
-                        src={afsalImg}
-                        alt="Afsal Zaini"
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="relative rounded-[3rem] overflow-hidden border border-white/10 group">
+                      <div className="aspect-[4/5] overflow-hidden">
+                        <img
+                          src={image7}
+                          alt="Afsal Zaini"
+                          className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                      </div>
                     </div>
-                  </div>
 
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                    className="absolute -bottom-6 -left-6 bg-card border border-border/50 rounded-2xl p-6 shadow-2xl"
-                  >
-                    <p className="text-primary font-montserrat font-semibold text-lg">
-                      Business Development
-                    </p>
-                    <p className="text-foreground text-sm font-inter">
-                      Specialist & Strategist
-                    </p>
-                  </motion.div>
-                </div>
-              </AnimatedSection>
+                    {/* <motion.div
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -bottom-6 -right-6 bg-white/[0.02] backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 shadow-2xl z-20"
+                    >
+                      <p className="text-primary font-display font-bold text-xl mb-1 mt-1">
+                        Strategy First
+                      </p>
+                      <p className="text-slate-400 text-xs font-body tracking-[0.2em] uppercase font-medium">
+                        Structure &gt; Performance
+                      </p>
+                    </motion.div> */}
+                  </div>
+                </AnimatedSection>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 relative font-inter">
+        <section className="py-20 relative bg-background/50">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
                   <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="text-center p-8 rounded-2xl bg-card/50 border border-border/30"
+                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.03)" }}
+                    className="text-center p-10 rounded-[2.5rem] bg-white/[0.01] border border-white/5 backdrop-blur-sm transition-all duration-500"
                   >
-                    <p className="font-montserrat text-4xl md:text-5xl font-bold text-gradient mb-2">
+                    <p className="font-display text-4xl md:text-5xl font-black text-white mb-3 tracking-tighter">
                       {stat.value}
                     </p>
-                    <p className="text-foreground font-inter">{stat.label}</p>
+                    <p className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">{stat.label}</p>
                   </motion.div>
                 </AnimatedSection>
               ))}
@@ -141,75 +148,109 @@ const About = () => {
           </div>
         </section>
 
-        {/* Mission Section */}
-        <section className="py-24 relative overflow-hidden font-inter">
-          <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[150px] -translate-y-1/2" />
+        {/* WHAT I DO Section */}
+        <section className="py-28 relative overflow-hidden bg-background">
+          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[200px] -z-10 -translate-y-1/2" />
 
           <div className="container mx-auto px-6 relative z-10">
-            <AnimatedSection className="max-w-4xl mx-auto text-center">
-              {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                My Mission
-              </span> */}
-
-              <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-white mb-8">
-                Transforming Entrepreneurs,{" "}
-                <span className="text-gradient">One Business at a Time</span>
-              </h2>
-
-              <div className="space-y-4 text-lg">
-                {[
-                  "Uplift entrepreneurs from struggles to success",
-                  "Bring clarity to business owners overwhelmed by challenges",
-                  "Transform both business operations and personal mindset",
-                  "Build strong, scalable business systems",
-                  "Shape confident, capable entrepreneurs ready for growth",
-                ].map((item, index) => (
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-20 items-center">
+                <AnimatedSection>
                   <motion.div
-                    key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-4 text-left max-w-2xl mx-auto"
+                    className="flex items-center gap-3 mb-6"
                   >
-                    <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0" />
-                    <span className="text-foreground font-inter">{item}</span>
+                    <div className="h-[1px] w-8 bg-primary/60" />
+                    <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+                      The Methodology
+                    </span>
                   </motion.div>
-                ))}
+
+                  <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-tight">
+                    Frameworks, <br />
+                    <span className="text-gradient">Not Theory</span>
+                  </h2>
+                  <p className="text-slate-400 text-xl font-light leading-relaxed mb-10 font-body">
+                    No fluff. No over-theory. Only execution-focused clarity to prepare your business for long-term scalability.
+                  </p>
+                </AnimatedSection>
+
+                <div className="space-y-6">
+                  {[
+                    "Reduce Owner Dependency",
+                    "Build Leadership Clarity",
+                    "Install Working Systems (Sales, Ops, Finance)",
+                    "Create Accountability-Driven Teams",
+                    "Prepare for Long-term Scalability",
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center gap-5 p-5 rounded-3xl bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-500 border border-white/5"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="text-slate-300 font-body font-medium">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </section>
 
-        {/* Values Section */}
-        <section className="py-24 relative font-inter">
-          <div className="container mx-auto px-6">
-            <AnimatedSection className="text-center mb-16">
-              {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-                Core Values
-              </span> */}
+        {/* BUSINESS FRAMEX Section */}
+        <section className="py-28 relative bg-background/50 overflow-hidden">
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px] -z-10" />
 
-              <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-white">
-                What Drives <span className="text-gradient">My Work</span>
+          <div className="container mx-auto px-6">
+            <AnimatedSection className="text-center mb-20">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center gap-3 mb-6"
+              >
+                <div className="h-[1px] w-8 bg-primary/60" />
+                <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+                  The Core Framework
+                </span>
+                <div className="h-[1px] w-8 bg-primary/60" />
+              </motion.div>
+
+              <h2 className="font-display text-5xl md:text-7xl font-black text-white tracking-tighter mb-8 leading-tight">
+                Business <span className="text-gradient">FrameX</span>
               </h2>
+              <p className="text-slate-400 text-xl font-body font-light max-w-2xl mx-auto">
+                Moving businesses through 4 clear stages of dominance. The backbone of all BizZen Programs.
+              </p>
             </AnimatedSection>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { step: "01", title: "Structure", desc: "Direction, roles, and strategic priorities." },
+                { step: "02", title: "System", desc: "Hard-coding SOPs, workflows, and reporting." },
+                { step: "03", title: "Performance", desc: "Metrics, reviews, and execution rhythm." },
+                { step: "04", title: "Accountability", desc: "Team ownership and owner liberation." },
+              ].map((item, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
-                  <GlowCard className="h-full text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                      <value.icon className="w-8 h-8 text-primary" />
-                    </div>
+                  <div className="group relative bg-white/[0.02] border border-white/5 rounded-[3rem] p-10 h-full backdrop-blur-sm transition-all duration-500 hover:border-primary/20 flex flex-col items-start text-left">
+                    <span className="font-display text-4xl font-black text-primary/10 group-hover:text-primary/20 transition-colors mb-4">{item.step}</span>
 
-                    <h3 className="font-montserrat text-xl font-semibold text-white mb-3">
-                      {value.title}
+                    <h3 className="font-display text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                      {item.title}
                     </h3>
 
-                    <p className="text-foreground text-sm font-inter">
-                      {value.description}
+                    <p className="text-slate-400 text-sm leading-relaxed font-body font-light group-hover:text-slate-300">
+                      {item.desc}
                     </p>
-                  </GlowCard>
+                  </div>
                 </AnimatedSection>
               ))}
             </div>
@@ -217,28 +258,29 @@ const About = () => {
         </section>
 
         {/* Kauzar Academy Section */}
-        <section className="py-24 relative overflow-hidden font-inter">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-
+        <section className="py-32 relative overflow-hidden bg-background">
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection className="text-center">
-                {/* <span className="inline-block px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
-                  My Platform
-                </span> */}
+                <div className="mb-12 flex justify-center">
+                  <div className="px-6 py-2 rounded-full border border-primary/20 bg-primary/5">
+                    <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em]">The Platform</span>
+                  </div>
+                </div>
 
-                <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-white mb-8">
+                <h2 className="font-display text-5xl md:text-7xl font-black text-white mb-10 tracking-tighter leading-tight">
                   Kauzar <span className="text-gradient">Academy</span>
                 </h2>
 
-                <p className="text-foreground text-lg leading-relaxed font-inter mb-8">
-                  Kauzar Academy is a personalized platform of excellence providing online & offline learning
-                  in Web Development, Life Manifesting & Personal Growth, and Business Solutions & Entrepreneurship.
+                <p className="text-slate-400 text-xl font-light leading-relaxed font-body mb-12 max-w-2xl mx-auto">
+                  A sanctuary for entrepreneurs who understand that systemic mastery is the only path to sustainable freedom.
                 </p>
 
-                <p className="text-2xl font-montserrat italic text-white">
-                  "Where learning meets transformation."
-                </p>
+                <div className="p-10 rounded-[3.5rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl inline-block w-full">
+                  <p className="text-slate-300 text-lg leading-relaxed font-body">
+                    We provide high-impact learning in <span className="text-white font-medium">Digital Infrastructure</span>, <span className="text-white font-medium">Personal Mastery</span>, and <span className="text-white font-medium">Business Scale Mastery</span>.
+                  </p>
+                </div>
               </AnimatedSection>
             </div>
           </div>

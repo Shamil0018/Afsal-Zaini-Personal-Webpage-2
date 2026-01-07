@@ -1,94 +1,153 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Rocket, User, Brain, Code } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Layers } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { Button } from "@/components/ui/button";
 
-const courses = [
-  {
-    icon: TrendingUp,
-    title: "Business Growth Mastery",
-    description: "Complete program to grow sales, revenue & build business systems.",
-    color: "from-orange-500/20 to-orange-600/5",
-  },
-  {
-    icon: Rocket,
-    title: "Startup Launch Program",
-    description: "From zero to launch with planning, validation & branding.",
-    color: "from-amber-500/20 to-amber-600/5",
-  },
-  {
-    icon: User,
-    title: "Personal Consulting (1:1)",
-    description: "One-to-one business problem solving & personalized strategies.",
-    color: "from-primary/20 to-primary/5",
-  },
-];
+import img31 from "@/assets/image 31.jpeg";
+import img32 from "@/assets/image 32.jpeg";
+import img33 from "@/assets/image 33.jpeg";
 
-import { TrendingUp } from "lucide-react";
+const programs = [
+  {
+    title: "Boss Backbone",
+    subtitle: "2026 Leadership & System Mastery",
+    image: img31,
+    features: [
+      "Clear leadership identity",
+      "Strong system foundation",
+      "Accountable teams",
+      "Growth without burnout"
+    ],
+    formats: "One-to-One Prime • One-Day Intensive",
+    accent: "from-primary/20 to-primary/5",
+    icon: ShieldCheck
+  },
+  {
+    title: "BFP – Boss FrameX Plan",
+    subtitle: "2-Month Business Structure Program",
+    image: img32,
+    features: [
+      "Direction setting",
+      "Core system building",
+      "Role clarity",
+      "Daily execution discipline"
+    ],
+    formats: "Foundation Program",
+    accent: "from-accent/20 to-accent/5",
+    icon: Zap
+  },
+  {
+    title: "Backbone FrameX Plan",
+    subtitle: "3–12 Months Transformation",
+    image: img33,
+    features: [
+      "Owner-run → System-run",
+      "SOP creation & Execution rhythm",
+      "Accountability tracking",
+      "Owner liberation (20% model)"
+    ],
+    formats: "Scale & Transition Program",
+    accent: "from-slate-500/20 to-slate-500/5",
+    icon: Layers
+  }
+];
 
 const CoursesPreview = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-28 relative overflow-hidden bg-background">
       {/* Background elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[180px]" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[180px] -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-16">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-20">
           <AnimatedSection>
-            {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-              Programs
-            </span> */}
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-              Featured <span className="text-gradient">Courses</span>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 mb-6"
+            >
+              <div className="h-[1px] w-8 bg-primary/60" />
+              <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+                Expert Guidance
+              </span>
+            </motion.div>
+
+            <h2 className="font-display text-5xl md:text-6xl font-bold text-white mb-6">
+              SIGNATURE <span className="text-gradient">PROGRAMS</span>
             </h2>
-            <p className="text-foreground text-lg max-w-xl">
-              Transform your entrepreneurial journey with our comprehensive programs
+            <p className="text-slate-400 text-xl font-light max-w-2xl leading-relaxed">
+              Premium execution-driven coaching designed for owners who prioritize <span className="text-white font-medium">clarity over theory.</span>
             </p>
           </AnimatedSection>
-          
+
           <AnimatedSection delay={0.2}>
-            <Button asChild variant="outline" className="group">
+            <Button asChild variant="outline" size="lg" className="border-white/10 hover:bg-white/5 group">
               <Link to="/courses">
-                View All Courses
+                Explore All Programs
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </AnimatedSection>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {programs.map((program, index) => (
             <AnimatedSection key={index} delay={index * 0.15}>
               <motion.div
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-                className="group relative rounded-3xl overflow-hidden"
+                whileHover={{ y: -12 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="group h-full flex flex-col bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden backdrop-blur-sm"
               >
-                {/* Gradient background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${course.color}`} />
-                
-                {/* Card content */}
-                <div className="relative p-8 border border-border/50 rounded-3xl h-full bg-card/50 backdrop-blur-sm">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <course.icon className="w-8 h-8 text-primary" />
+                {/* Image Section */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+
+                  {/* Floating Icon */}
+                  <div className="absolute top-6 right-6 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20">
+                    <program.icon className="w-6 h-6 text-primary" />
                   </div>
-                  
-                  <h3 className="font-display text-2xl font-semibold text-white mb-4">
-                    {course.title}
-                  </h3>
-                  
-                  <p className="text-foreground leading-relaxed mb-6">
-                    {course.description}
-                  </p>
-                  
-                  <Link
-                    to="/courses"
-                    className="inline-flex items-center text-primary font-medium group-hover:gap-3 gap-2 transition-all"
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                </div>
+
+                {/* Content Section */}
+                <div className="flex-1 p-8 flex flex-col">
+                  <div className="mb-6">
+                    <h3 className="font-display text-2xl font-bold text-white mb-2 leading-tight">
+                      {program.title}
+                    </h3>
+                    <p className="text-primary/90 text-sm font-medium tracking-wide uppercase">
+                      {program.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 mb-8 flex-1">
+                    {program.features.map((feature, fIndex) => (
+                      <div key={fIndex} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-primary/40 mt-0.5" />
+                        <span className="text-slate-400 text-sm leading-relaxed">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-6 border-t border-white/5 mt-auto">
+                    <p className="text-[11px] uppercase tracking-widest text-slate-500 font-semibold mb-4">
+                      {program.formats}
+                    </p>
+
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center text-white text-sm font-medium hover:text-primary transition-colors group/link"
+                    >
+                      Check Availability
+                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             </AnimatedSection>

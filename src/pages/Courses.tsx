@@ -1,76 +1,49 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { TrendingUp, Rocket, User, Brain, Code, CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { Button } from "@/components/ui/button";
+import img31 from "@/assets/image 31.jpeg";
+import img32 from "@/assets/image 32.jpeg";
+import img33 from "@/assets/image 33.jpeg";
 
 const courses = [
   {
-    icon: TrendingUp,
-    title: "Business Growth Mastery",
-    description: "A complete program that helps business owners achieve sustainable growth and scale their operations.",
+    image: img31,
+    title: "Boss Backbone — 2026 Leadership & System Mastery Program",
+    description: "Architected for high-level business owners seeking elite leadership identity and absolute operational control. A synthesis of strategic vision and tactical execution.",
     features: [
-      "Grow sales, revenue & operations",
-      "Build business systems & long-term strategies",
-      "Scale with structure, clarity & confidence",
-      "Access proven growth frameworks",
+      "Clear leadership identity",
+      "Strong system foundation",
+      "Accountable teams",
+      "Sustainable growth without burnout",
+      "One-to-One Prime Sessions",
+      "One-Day Intensive Sessions",
     ],
-    color: "from-primary/15 to-primary/5",
-    borderColor: "border-primary/30",
   },
   {
-    icon: Rocket,
-    title: "Startup Launch Program",
-    description: "Guides beginners from zero to launch with comprehensive planning and execution frameworks.",
+    image: img32,
+    title: "BFP – Boss FrameX Plan (2-Month Business Structure Program)",
+    description: "The definitive starting point for entrepreneurs ready to hard-code direction, roles, and discipline into their business. A 60-day sprint to structural clarity.",
     features: [
-      "Start a business step-by-step",
-      "Learn planning, validation & branding",
-      "Set up marketing systems & foundations",
-      "Launch with confidence and clarity",
+      "Strategic direction setting",
+      "Core system building",
+      "Absolute role clarity",
+      "Daily execution discipline",
     ],
-    color: "from-accent/15 to-accent/5",
-    borderColor: "border-accent/30",
   },
   {
-    icon: User,
-    title: "Personal Business Consulting (1:1)",
-    description: "A complete personal guidance experience with one-on-one business problem solving.",
+    image: img33,
+    title: "Backbone FrameX Plan (3–12 Months) Complete Business Transformation",
+    description: "The ultimate transition from owner-run chaos to a system-driven legacy. Engineering owner liberation through a specialized 20% dependency model.",
     features: [
-      "One-to-one business problem solving",
-      "Fix sales, marketing & management issues",
-      "Personalized growth strategies",
-      "Full business analysis + action plan",
+      "Custom SOP creation",
+      "Execution rhythm installation",
+      "Accountability tracking systems",
+      "Owner liberation (20% dependency)",
     ],
-    color: "from-primary/20 to-primary/5",
-    borderColor: "border-primary/30",
-  },
-  {
-    icon: Brain,
-    title: "Life Manifestation Blueprint",
-    description: "A total personal transformation program for mindset, discipline, and goal achievement.",
-    features: [
-      "Mindset training & reprogramming",
-      "Goal manifestation techniques",
-      "Discipline, clarity & personal growth",
-      "Lifestyle transformation roadmap",
-    ],
-    color: "from-blue-light/20 to-blue-light/5",
-    borderColor: "border-blue-glow/30",
-  },
-  {
-    icon: Code,
-    title: "Web Development Full Stack Course",
-    description: "A practical, job-ready development program for aspiring developers.",
-    features: [
-      "Full front-end + back-end training",
-      "Beginners learn coding from zero",
-      "Real-world, project-based learning",
-      "Become job-ready full-stack developer",
-    ],
-    color: "from-accent/20 to-accent/5",
-    borderColor: "border-accent/30",
   },
 ];
 
@@ -79,90 +52,112 @@ const Courses = () => {
   return (
     <>
       <Helmet>
-        <title>Courses & Programs | Afsal Zaini - Kauzar Academy</title>
+        <title>Signature Programs | Afsal Zaini - Kauzar Academy</title>
         <meta
           name="description"
-          content="Transform your career with Business Growth Mastery, Startup Launch Program, 1:1 Consulting, Life Manifestation, and Web Development courses at Kauzar Academy."
+          content="Transform your business with Boss Backbone, Boss FrameX Plan, and Backbone FrameX. Elite programs designed for systemic mastery and owner liberation."
         />
       </Helmet>
 
       <Layout>
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 relative overflow-hidden font-inter">
-          <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[150px]" />
-          
+        <section className="pt-40 pb-20 relative overflow-hidden bg-background">
+          <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[180px] -z-10" />
+
           <div className="container mx-auto px-6 relative z-10">
             <AnimatedSection className="text-center max-w-4xl mx-auto">
-              {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-inter mb-6">
-                Programs & Courses
-              </span> */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center gap-3 mb-6"
+              >
+                <div className="h-[1px] w-8 bg-primary/60" />
+                <span className="text-sm font-body tracking-[0.3em] text-primary/80 uppercase font-medium">
+                  Signature Programs
+                </span>
+                <div className="h-[1px] w-8 bg-primary/60" />
+              </motion.div>
 
-              <h1 className="font-montserrat text-5xl md:text-6xl font-bold text-white mb-8">
-                Transform Your <span className="text-gradient">Journey</span>
+              <h1 className="font-display text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
+                Engineer Your <span className="text-gradient">Legacy</span>
               </h1>
 
-              <p className="text-foreground text-lg md:text-xl max-w-2xl mx-auto font-inter">
-                Comprehensive programs designed to elevate your business, career, and personal growth. 
-                Choose your path to transformation.
+              <p className="text-slate-400 text-xl font-body font-light max-w-2xl mx-auto leading-relaxed">
+                Elite frameworks designed to move you from <span className="text-white font-medium">operational chaos</span> to <span className="text-white font-medium">systematic dominance</span>. Choose your blueprint for scale.
               </p>
             </AnimatedSection>
           </div>
         </section>
 
         {/* Courses Grid */}
-        <section className="py-20 font-inter">
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-6">
-            <div className="space-y-12">
+            <div className="space-y-24">
               {courses.map((course, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
                   <motion.div
                     whileHover={{ scale: 1.01 }}
-                    transition={{ duration: 0.3 }}
-                    className={`relative rounded-3xl overflow-hidden ${course.borderColor} border`}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="group relative rounded-[3.5rem] overflow-hidden border border-white/5 bg-white/[0.01] backdrop-blur-sm hover:border-primary/20 transition-all duration-500 shadow-2xl"
                   >
-                    {/* Gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${course.color}`} />
-                    
-                    <div className="relative p-8 md:p-12 bg-card/50 backdrop-blur-sm">
-                      <div className="grid lg:grid-cols-[1fr,2fr] gap-8 items-start">
+                    <div className="relative p-8 md:p-14">
+                      <div className="grid lg:grid-cols-12 gap-12 items-center">
 
-                        {/* Left side */}
-                        <div>
-                          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center mb-6">
-                            <course.icon className="w-10 h-10 text-primary" />
+                        {/* Left side: Image & Title */}
+                        <div className="lg:col-span-12 xl:col-span-5">
+                          <div className="relative rounded-[2.5rem] overflow-hidden mb-10 aspect-video xl:aspect-square group">
+                            <img
+                              src={course.image}
+                              alt={course.title}
+                              className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                            <div className="absolute bottom-6 left-6 right-6">
+                              <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 mb-2">
+                                <span className="text-primary text-[10px] font-black uppercase tracking-widest">Elite Program</span>
+                              </div>
+                            </div>
                           </div>
 
-                          <h2 className="font-montserrat text-3xl font-bold text-white mb-4">
+                          <h2 className="font-display text-3xl md:text-4xl font-black text-white mb-6 tracking-tight leading-tight group-hover:text-primary transition-colors">
                             {course.title}
                           </h2>
 
-                          <p className="text-foreground text-lg leading-relaxed font-inter">
+                          <p className="text-slate-400 text-lg leading-relaxed font-body font-light">
                             {course.description}
                           </p>
                         </div>
 
-                        {/* Right side */}
-                        <div>
-                          <h3 className="font-montserrat text-xl font-semibold text-white mb-6">
-                            What You'll Learn
-                          </h3>
+                        {/* Right side: Features */}
+                        <div className="lg:col-span-12 xl:col-span-7">
+                          <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-10 md:p-14 backdrop-blur-xl">
+                            <h3 className="font-display text-xs font-bold text-slate-500 uppercase tracking-[0.4em] mb-10">
+                              Strategic Objectives
+                            </h3>
 
-                          <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                            {course.features.map((feature, fIndex) => (
-                              <div key={fIndex} className="flex items-start gap-3">
-                                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                                <span className="text-foreground font-inter">{feature}</span>
-                              </div>
-                            ))}
+                            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 mb-12">
+                              {course.features.map((feature, fIndex) => (
+                                <div key={fIndex} className="flex items-start gap-5 group/item">
+                                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-primary transition-all duration-300">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-primary group-hover/item:text-white transition-colors" />
+                                  </div>
+                                  <span className="text-slate-300 font-body text-base group-hover/item:text-white transition-colors">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="flex justify-start">
+                              <Button asChild size="lg" className="h-20 rounded-[2rem] px-14 text-lg font-black group/btn overflow-hidden relative">
+                                <Link to="/contact" className="relative z-10 w-full h-full flex items-center justify-center">
+                                  Request Diagnostic
+                                  <ArrowRight className="ml-3 h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
+                                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover/btn:opacity-100 transition-opacity -z-10" />
+                                </Link>
+                              </Button>
+                            </div>
                           </div>
-
-                          <Button asChild className="group font-inter">
-                            <Link to="/contact">
-                              Enroll Now
-                              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                          </Button>
                         </div>
 
                       </div>
@@ -175,28 +170,30 @@ const Courses = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 relative overflow-hidden font-inter">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
-          
+        <section className="py-32 relative overflow-hidden bg-background">
+          <div className="absolute inset-x-0 bottom-0 h-[200px] bg-gradient-to-t from-primary/5 to-transparent -z-10" />
+
           <div className="container mx-auto px-6 relative z-10">
-            <AnimatedSection className="text-center max-w-3xl mx-auto">
+            <AnimatedSection className="text-center max-w-4xl mx-auto">
+              <div className="bg-white/[0.02] backdrop-blur-3xl border border-white/5 rounded-[3.5rem] p-16 md:p-24 shadow-2xl relative overflow-hidden">
+                <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:32px_32px] -z-10" />
 
-              <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-white mb-6">
-                Not Sure Which Program is <span className="text-gradient">Right for You?</span>
-              </h2>
+                <h2 className="font-display text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-tight">
+                  Not Sure Which Program <br />
+                  <span className="text-gradient">is Right for You?</span>
+                </h2>
 
-              <p className="text-foreground text-lg font-inter mb-10">
-                Schedule a free consultation call and let's discuss your goals. 
-                I’ll help you choose the perfect program for your journey.
-              </p>
+                <p className="text-slate-400 text-xl font-body font-light mb-12 max-w-2xl mx-auto">
+                  Schedule a private diagnostic call. We'll audit your current complexity and align you with the transformational path that fits your vision.
+                </p>
 
-              <Button asChild size="lg" className="group font-inter">
-                <Link to="/contact">
-                  Book Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-
+                <Button asChild size="lg" className="h-18 rounded-[2rem] px-12 text-lg font-bold group">
+                  <Link to="/contact">
+                    Free Transformation Call
+                    <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
             </AnimatedSection>
           </div>
         </section>

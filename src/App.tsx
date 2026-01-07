@@ -14,10 +14,10 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "@/pages/admin/index";
 import AdminLogin from "@/pages/admin/login";
-import AdminAbout from "@/pages/admin/about";
-import AdminEvents from "@/pages/admin/events";
-import AdminCourses from "@/pages/admin/courses";
-import AdminContacts from "@/pages/admin/contacts";
+// import AdminAbout from "@/pages/admin/about";
+// import AdminEvents from "@/pages/admin/events";
+// import AdminCourses from "@/pages/admin/courses";
+// import AdminContacts from "@/pages/admin/contacts";
 
 const queryClient = new QueryClient();
 

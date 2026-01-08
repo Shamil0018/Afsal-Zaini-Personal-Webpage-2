@@ -68,7 +68,7 @@ const TestimonialsSection = () => {
         </AnimatedSection>
 
         <div className="max-w-5xl mx-auto">
-          <div className="relative bg-white/[0.02] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-12 md:p-20 shadow-2xl">
+          <div className="relative bg-white/[0.02] backdrop-blur-3xl border border-white/5 rounded-[3rem] p-8 md:p-20 shadow-2xl">
             {/* Absolute Decorative Quote */}
             <Quote className="absolute top-10 right-10 w-24 h-24 text-primary/10 -z-10" />
 
@@ -87,7 +87,7 @@ const TestimonialsSection = () => {
                   </div>
                 </div>
 
-                <p className="font-display text-3xl md:text-4xl text-white leading-relaxed mb-12 italic font-light tracking-tight px-4 flex flex-col items-center">
+                <p className="font-display text-2xl md:text-4xl text-white leading-relaxed mb-12 italic font-light tracking-tight px-4 flex flex-col items-center">
                   <span className="max-w-3xl">"{testimonials[currentIndex].quote}"</span>
                 </p>
 

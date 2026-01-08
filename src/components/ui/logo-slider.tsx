@@ -53,7 +53,7 @@ export const LogoSlider = () => {
             `}</style>
 
             <div className="logo-scroll-container">
-                <div className="logo-infinite-scroll flex items-center gap-16 md:gap-24 lg:gap-32 px-12">
+                <div className="logo-infinite-scroll flex items-center gap-8 md:gap-24 lg:gap-32 px-12">
                     {duplicatedLogos.map((logo, index) => (
                         <div
                             key={index}

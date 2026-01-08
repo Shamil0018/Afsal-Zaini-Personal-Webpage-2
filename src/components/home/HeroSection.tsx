@@ -12,7 +12,7 @@ const HeroSection = () => {
         <img
           src={heroBgImg}
           alt="Hero Background"
-          className="w-full h-full object-cover object-top opacity-60 transform scale-100"
+          className="w-full h-full object-cover object-[center_top] lg:object-top opacity-60 transform scale-100"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
       </div>

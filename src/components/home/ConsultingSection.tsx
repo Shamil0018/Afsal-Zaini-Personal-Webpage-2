@@ -30,7 +30,7 @@ const ConsultingSection = () => {
           <AnimatedSection className="lg:sticky lg:top-32">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-[2.5rem] blur opacity-25 group-hover:opacity-100 transition duration-1000" />
-              <div className="relative aspect-[4/4.2] rounded-[2.5rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+              <div className="relative aspect-[4/3] md:aspect-[4/4.2] rounded-[2.5rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
                 <img
                   src={img15}
                   alt="Business Strategy Mastery"

@@ -47,11 +47,11 @@ const AboutPreview = () => {
               {/* Soft Shadow behind image */}
               <div className="absolute -inset-4 bg-primary/5 blur-3xl rounded-full scale-110" />
 
-              <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] md:aspect-auto">
                 <img
                   src={aboutImg}
                   alt="Afsal Zaini - Who am I"
-                  className="w-full h-auto object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full md:h-auto object-cover md:object-contain grayscale-[10%] group-hover:grayscale-0 transition-all duration-700"
                 />
                 {/* Subtle Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />

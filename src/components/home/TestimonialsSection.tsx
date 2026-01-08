@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { LogoSlider } from "@/components/ui/logo-slider";
 
 const testimonials = [
   {
@@ -42,7 +43,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-28 relative overflow-hidden bg-background">
+    <section className="py-20 relative overflow-hidden bg-background">
       {/* Background Ambience */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-primary/5 rounded-full blur-[180px] -z-10" />
 
@@ -122,8 +123,8 @@ const TestimonialsSection = () => {
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className={`h-1.5 rounded-full transition-all duration-500 ${index === currentIndex
-                        ? "bg-primary w-12"
-                        : "bg-white/10 w-3 hover:bg-white/30"
+                      ? "bg-primary w-12"
+                      : "bg-white/10 w-3 hover:bg-white/30"
                       }`}
                   />
                 ))}
@@ -140,6 +141,16 @@ const TestimonialsSection = () => {
             </div>
           </div>
         </div>
+
+        {/* Logo Slider Section */}
+        <AnimatedSection delay={0.4} className="mt-12">
+          <div className="text-center mb-10">
+            <p className="text-slate-500 font-body text-[11px] uppercase tracking-[0.4em] font-medium opacity-60">
+              Trusted by Leading Brands & Organizations
+            </p>
+          </div>
+          <LogoSlider />
+        </AnimatedSection>
       </div>
     </section>
   );

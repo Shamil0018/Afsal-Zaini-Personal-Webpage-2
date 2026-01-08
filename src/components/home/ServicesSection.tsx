@@ -2,30 +2,35 @@ import { motion } from "framer-motion";
 import { UserCheck, Compass, Layout, Users, BarChart3, ShieldCheck } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GlowCard from "@/components/ui/GlowCard";
+import ownerDependencyImg from "@/assets/image 36.png";
+import leadershipImg from "@/assets/image 37.png";
+import systemsImg from "@/assets/image 38.png";
+import teamsImg from "@/assets/image 39.png";
+import scalabilityImg from "@/assets/image 40.png";
 
 const impactAreas = [
   {
-    icon: UserCheck,
+    image: ownerDependencyImg,
     title: "Reduce owner dependency",
     description: "Move from being the operator to the visionary by building systems that function without your constant presence.",
   },
   {
-    icon: Compass,
+    image: leadershipImg,
     title: "Build leadership clarity",
     description: "Define clear paths and decision-making frameworks that empower your team to lead with confidence.",
   },
   {
-    icon: Layout,
+    image: systemsImg,
     title: "Install working systems",
     description: "Operationalize Sales, Ops, Finance, and Team management with custom-built, practical implementation systems.",
   },
   {
-    icon: Users,
+    image: teamsImg,
     title: "Create accountability-driven teams",
     description: "Build a culture where ownership is natural and teams are responsible for results, not just tasks.",
   },
   {
-    icon: BarChart3,
+    image: scalabilityImg,
     title: "Prepare for long-term scalability",
     description: "Set the structural foundation required to scale your business sustainably and predictably.",
   }
@@ -66,8 +71,15 @@ const ServicesSection = () => {
             <AnimatedSection key={index} delay={index * 0.1}>
               <GlowCard className="h-full border-white/5 bg-white/[0.02] backdrop-blur-sm group hover:border-primary/20 transition-all duration-500">
                 <div className="flex flex-col h-full p-1">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-500">
-                    <item.icon className="w-7 h-7 text-primary" />
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-500 overflow-hidden">
+                    {item.image && (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-10 h-10 object-contain invert brightness-200"
+                        style={{ mixBlendMode: 'screen' }}
+                      />
+                    )}
                   </div>
                   <h3 className="font-display text-xl font-bold text-white mb-3 leading-tight">
                     {item.title}

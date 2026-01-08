@@ -6,10 +6,11 @@ import { Menu, X, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Courses", path: "/courses" },
+  { name: "Programs", path: "/courses" },
   // { name: "Products", path: "/products" },
   { name: "Events", path: "/events" },
   { name: "Blogs", path: "/blogs" },
+  { name: "Gallery", path: "/gallery" },
   { name: "Contact", path: "/contact" },
 ];
 

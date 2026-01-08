@@ -126,13 +126,23 @@ const CoursesPreview = () => {
                     </p>
                   </div>
 
+                  <div className="mb-8">
+                    <Link
+                      to="/courses"
+                      className="inline-flex items-center text-primary/80 text-sm font-medium hover:text-primary transition-all duration-300 group/know"
+                    >
+                      Know More
+                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/know:translate-x-1" />
+                    </Link>
+                  </div>
+
                   <div className="space-y-3 mb-8 flex-1">
-                    {program.features.map((feature, fIndex) => (
+                    {/* {program.features.map((feature, fIndex) => (
                       <div key={fIndex} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-primary/40 mt-0.5" />
                         <span className="text-slate-400 text-sm leading-relaxed">{feature}</span>
                       </div>
-                    ))}
+                    ))} */}
                   </div>
 
                   <div className="pt-6 border-t border-white/5 mt-auto">

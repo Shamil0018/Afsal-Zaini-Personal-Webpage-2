@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBgImg from "@/assets/image 22.jpeg";
+import heroBgImg from "@/assets/hero-bg.png";
 
 const HeroSection = () => {
   return (
@@ -16,8 +16,6 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
       </div>
-
-
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mr-auto text-center lg:text-left">
@@ -54,7 +52,7 @@ const HeroSection = () => {
               className="relative pl-6 mb-10 border-l-2 border-primary/40"
             >
               <p className="font-display text-2xl md:text-3xl text-slate-100 italic font-light leading-relaxed">
-                "I help business owners build <span className="text-white font-normal underline decoration-primary/30 underline-offset-8">systems</span>, not stress"
+                "I help business owners build <span className="text-white font-normal underline decoration-primary/30 underline-offset-8">systems</span>,<br /> not stress"
               </p>
             </motion.div>
 

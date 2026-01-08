@@ -11,6 +11,7 @@ import Products from "./pages/Products";
 import Events from "./pages/Events";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "@/pages/admin/index";
 import AdminLogin from "@/pages/admin/login";
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/events" element={<Events />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/login" element={<AdminLogin />} />

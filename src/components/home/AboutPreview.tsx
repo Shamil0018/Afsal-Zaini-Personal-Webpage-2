@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 import aboutImg from "@/assets/image 9.png";
+
+import { VideoPlayer } from "@/components/ui/video-thumbnail-player";
+import videoV1 from "@/assets/video 1.mp4";
+import videoThumb from "@/assets/image 41.jpeg";
 
 const stats = [
   { value: "5+", label: "Years of Experience" },
@@ -15,8 +20,21 @@ const AboutPreview = () => {
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
+        {/* Video Player Section - Now at the Top */}
+        <AnimatedSection className="mb-24">
+          <div className="max-w-7xl mx-auto">
+            <VideoPlayer
+              thumbnailUrl={videoThumb}
+              videoUrl={videoV1}
+              title="A Message to Business Owners"
+              description="How to build systems that liberate your time."
+              aspectRatio="16/9"
+              className="rounded-[3rem] shadow-primary/20 shadow-2xl"
+            />
+          </div>
+        </AnimatedSection>
 
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
           {/* Left - Image (5/12 split) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -77,32 +95,8 @@ const AboutPreview = () => {
               </p>
 
               <p className="max-w-2xl font-light tracking-wide text-slate-200">
-                I work with B2B, B2C, service-sector, and MSME business owners to help them shift from
-                Everything depends on me” to “My business runs on clarity, systems, and accountable teams.
-                {/* <span className="italic text-slate-400 block mt-2 mb-2">“Everything depends on me”</span>
-                to
-                <span className="text-white font-medium block">“My business runs on clarity, systems, and accountable teams.”</span> */}
+                I work with B2B, B2C, service-sector, and MSME business owners to help them shift from “Everything depends on me” to “My business runs on clarity, systems, and accountable teams.”
               </p>
-
-              {/* <div className="relative pl-6 border-l-2 border-primary/30">
-                <p className="max-w-2xl font-light leading-loose">
-                  As CEO of <span className="text-white font-medium">Kauzar Academy</span>, I created <span className="text-primary underline decoration-primary/30 underline-offset-8">Business FrameX</span> — a practical, implementation-driven framework focused on:
-                </p>
-
-                <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4">
-                  {[
-                    'Leadership clarity',
-                    'System installation',
-                    'Team accountability',
-                    'Owner liberation'
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-primary" />
-                      <span className="text-white/90 text-sm font-medium tracking-wide uppercase">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div> */}
             </div>
 
             {/* Stats section refined */}
@@ -118,7 +112,6 @@ const AboutPreview = () => {
               ))}
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

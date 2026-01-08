@@ -3,6 +3,12 @@ import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import blogImg1 from "@/assets/image 25.png";
+import blogImg2 from "@/assets/image 26.png";
+import blogImg3 from "@/assets/image 27.png";
+import blogImg4 from "@/assets/image 28.png";
+import blogImg5 from "@/assets/image 29.png";
+import blogImg6 from "@/assets/image 30.png";
 
 const newsArticles = [
   {
@@ -11,6 +17,7 @@ const newsArticles = [
     date: "December 2024",
     readTime: "5 min read",
     category: "Business Strategy",
+    image: blogImg1,
   },
   {
     title: "The Mindset Shift That Changed My Business",
@@ -18,6 +25,7 @@ const newsArticles = [
     date: "November 2024",
     readTime: "4 min read",
     category: "Mindset",
+    image: blogImg2,
   },
   {
     title: "Building Your First Business Plan: A Step-by-Step Guide",
@@ -25,6 +33,7 @@ const newsArticles = [
     date: "November 2024",
     readTime: "8 min read",
     category: "Startup Guide",
+    image: blogImg3,
   },
   {
     title: "Why Most Businesses Fail in Their First Year",
@@ -32,6 +41,7 @@ const newsArticles = [
     date: "October 2024",
     readTime: "6 min read",
     category: "Business Insights",
+    image: blogImg4,
   },
   {
     title: "The Power of Personal Branding for Entrepreneurs",
@@ -39,6 +49,7 @@ const newsArticles = [
     date: "October 2024",
     readTime: "5 min read",
     category: "Personal Branding",
+    image: blogImg5,
   },
   {
     title: "From Employee to Entrepreneur: Making the Leap",
@@ -46,6 +57,7 @@ const newsArticles = [
     date: "September 2024",
     readTime: "7 min read",
     category: "Career Transition",
+    image: blogImg6,
   },
 ];
 
@@ -100,12 +112,15 @@ const Blogs = () => {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="group bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden h-full flex flex-col cursor-pointer backdrop-blur-sm transition-all duration-500 hover:border-primary/20"
                   >
-                    {/* Thumbnail placeholder */}
-                    <div className="aspect-[16/10] bg-slate-900/50 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-40" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-display text-5xl font-black text-primary/10 tracking-widest">KAUZAR</span>
-                      </div>
+                    {/* Thumbnail */}
+                    <div className="aspect-[16/10] relative overflow-hidden">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                       {/* Category badge */}
                       <div className="absolute top-6 left-6">
                         <span className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-xs font-bold text-primary uppercase tracking-widest">

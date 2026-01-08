@@ -125,9 +125,9 @@ const Courses = () => {
                             {course.title}
                           </h2>
 
-                          <p className="text-slate-400 text-lg leading-relaxed font-body font-light">
+                          {/* <p className="text-slate-400 text-lg leading-relaxed font-body font-light">
                             {course.description}
-                          </p>
+                          </p> */}
                         </div>
 
                         {/* Right side: Features */}
@@ -149,9 +149,9 @@ const Courses = () => {
                             </div>
 
                             <div className="flex justify-start">
-                              <Button asChild size="lg" className="h-20 rounded-[2rem] px-14 text-lg font-black group/btn overflow-hidden relative">
+                              <Button asChild size="lg" className="h-[60px] rounded-[2.5rem] px-16 text-xl font-black group/btn overflow-hidden relative shadow-2xl shadow-primary/20">
                                 <Link to="/contact" className="relative z-10 w-full h-full flex items-center justify-center">
-                                  Request Diagnostic
+                                  Join BizZen Programs
                                   <ArrowRight className="ml-3 h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
                                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover/btn:opacity-100 transition-opacity -z-10" />
                                 </Link>
@@ -187,7 +187,7 @@ const Courses = () => {
                   Schedule a private diagnostic call. We'll audit your current complexity and align you with the transformational path that fits your vision.
                 </p>
 
-                <Button asChild size="lg" className="h-18 rounded-[2rem] px-12 text-lg font-bold group">
+                <Button asChild size="lg" className="h-20 rounded-[2rem] px-12 text-lg font-bold group">
                   <Link to="/contact">
                     Free Transformation Call
                     <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-1 transition-transform" />

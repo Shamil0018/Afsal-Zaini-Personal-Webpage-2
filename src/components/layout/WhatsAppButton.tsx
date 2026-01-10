@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react";
 const WhatsAppButton = () => {
   return (
     <motion.a
-      href="https://wa.me/919656669066"
+      href="https://wa.me/919946661266"
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
@@ -16,7 +16,7 @@ const WhatsAppButton = () => {
       aria-label="Chat on WhatsApp"
     >
       <MessageCircle size={26} className="text-white fill-white" />
-      
+
       {/* Pulse animation */}
       <motion.div
         className="absolute inset-0 rounded-full bg-[#25D366]"

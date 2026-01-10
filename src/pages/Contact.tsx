@@ -13,20 +13,24 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone / WhatsApp",
-    details: ["9656 66 90 66", "9605 31 35 66"],
-    action: "tel:+919656669066",
+    details: [
+      { label: "Afsal Zaini", value: "9946 66 12 66", link: "tel:+919946661266" },
+      { label: "Kauzar Academy", value: "9605 50 17 66", link: "tel:+919605501766" }
+    ],
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["kauzaracademy@gmail.com"],
-    action: "mailto:kauzaracademy@gmail.com",
+    details: [
+      { label: "Official Inquiries", value: "kauzaracademy@gmail.com", link: "mailto:kauzaracademy@gmail.com" }
+    ],
   },
   {
     icon: MapPin,
     title: "Location",
-    details: ["Kottakkal, Malappuram District"],
-    action: null,
+    details: [
+      { label: "MSME Hub Office", value: "Kottakkal, Kerala", link: null }
+    ],
   },
 ];
 
@@ -83,7 +87,7 @@ const Contact = () => {
       `Email: ${formData.email}%0A` +
       `Phone: ${formData.phone}`;
 
-    window.open(`https://wa.me/919656669066?text=${whatsappMessage}`, "_blank");
+    window.open(`https://wa.me/919946661266?text=${whatsappMessage}`, "_blank");
 
     toast({
       title: "Message Sent!",
@@ -176,16 +180,21 @@ const Contact = () => {
                             <h3 className="font-display font-bold text-white text-xl mb-2">
                               {info.title}
                             </h3>
-                            {info.details.map((detail, dIndex) => (
-                              <p key={dIndex} className="text-slate-400 font-body text-base group-hover:text-slate-200 transition-colors">
-                                {info.action ? (
-                                  <a href={info.action} className="hover:text-primary transition-colors">
-                                    {detail}
-                                  </a>
-                                ) : (
-                                  detail
-                                )}
-                              </p>
+                            {info.details.map((detail: any, dIndex: number) => (
+                              <div key={dIndex} className="mb-2 last:mb-0">
+                                <p className="text-slate-500 text-[10px] uppercase tracking-wider mb-1 opacity-60">
+                                  {detail.label}
+                                </p>
+                                <p className="text-slate-400 font-body text-base group-hover:text-slate-200 transition-colors">
+                                  {detail.link ? (
+                                    <a href={detail.link} className="hover:text-primary transition-colors">
+                                      {detail.value}
+                                    </a>
+                                  ) : (
+                                    detail.value
+                                  )}
+                                </p>
+                              </div>
                             ))}
                           </div>
                         </motion.div>
@@ -194,7 +203,7 @@ const Contact = () => {
 
                     {/* WhatsApp CTA */}
                     <motion.a
-                      href="https://wa.me/919656669066"
+                      href="https://wa.me/919946661266"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.02 }}
@@ -202,7 +211,7 @@ const Contact = () => {
                       className="flex items-center justify-center gap-4 w-full h-16 rounded-[2rem] bg-emerald-500 text-white font-bold text-lg shadow-xl shadow-emerald-500/20"
                     >
                       <MessageCircle className="w-6 h-6" />
-                      Priority WhatsApp Line
+                      WhatsApp
                     </motion.a>
 
                     {/* Social Links */}
@@ -235,7 +244,7 @@ const Contact = () => {
                     <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:32px_32px] -z-10" />
 
                     <h2 className="font-display text-3xl font-black text-white mb-10 tracking-tight">
-                      Blueprint <span className="text-gradient">Enquiry</span>
+                      Direct <span className="text-gradient">Enquiry</span>
                     </h2>
 
                     <form onSubmit={handleSubmit} className="space-y-8">
@@ -249,14 +258,14 @@ const Contact = () => {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="Ameen"
+                            // placeholder="Ameen"
                             required
                             className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
                           />
                         </div>
                         <div>
                           <label htmlFor="email" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
-                            Strategic Email
+                            Email Id
                           </label>
                           <Input
                             id="email"
@@ -264,7 +273,7 @@ const Contact = () => {
                             type="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="ameen@founder.com"
+                            // placeholder="ameen@founder.com"
                             required
                             className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
                           />
@@ -274,7 +283,7 @@ const Contact = () => {
                       <div className="grid sm:grid-cols-2 gap-8">
                         <div>
                           <label htmlFor="phone" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
-                            Direct Line
+                            Phone Number
                           </label>
                           <Input
                             id="phone"
@@ -282,20 +291,20 @@ const Contact = () => {
                             type="tel"
                             value={formData.phone}
                             onChange={handleChange}
-                            placeholder="+91 9656 66 90 66"
+                            // placeholder="+91 9656 66 90 66"
                             className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
                           />
                         </div>
                         <div>
                           <label htmlFor="subject" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
-                            Scaling Target
+                            Subject
                           </label>
                           <Input
                             id="subject"
                             name="subject"
                             value={formData.subject}
                             onChange={handleChange}
-                            placeholder="System Mastery Plan"
+                            // placeholder="System Mastery Plan"
                             required
                             className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-2xl px-6"
                           />
@@ -304,14 +313,14 @@ const Contact = () => {
 
                       <div>
                         <label htmlFor="message" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
-                          Current Bottleneck
+                          Message
                         </label>
                         <Textarea
                           id="message"
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          placeholder="Describe the complexity you're currently navigating..."
+                          // placeholder="Describe the complexity you're currently navigating..."
                           rows={6}
                           required
                           className="bg-white/[0.03] border-white/5 focus:border-primary/50 text-white rounded-[2rem] p-6 resize-none"
@@ -320,7 +329,7 @@ const Contact = () => {
 
                       <Button type="submit" size="lg" className="w-full h-16 rounded-[2rem] text-lg font-bold group">
                         <Send className="mr-3 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        Initialize Scale Audit
+                        Send
                       </Button>
                     </form>
                   </div>

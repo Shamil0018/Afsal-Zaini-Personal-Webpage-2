@@ -121,9 +121,15 @@ const Footer = () => {
                 <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center flex-shrink-0">
                   <Phone size={18} className="text-primary" />
                 </div>
-                <div className="text-sm">
-                  <p className="text-slate-300 font-medium">9656 66 90 66</p>
-                  <p className="text-slate-500 text-xs mt-1">Direct Strategy Line</p>
+                <div className="text-sm space-y-2">
+                  <div>
+                    <p className="text-slate-300 font-medium">9946 66 12 66</p>
+                    <p className="text-slate-500 text-[10px] uppercase tracking-wider">Afsal Zaini</p>
+                  </div>
+                  <div>
+                    <p className="text-slate-300 font-medium">9605 50 17 66</p>
+                    <p className="text-slate-500 text-[10px] uppercase tracking-wider">Kauzar Academy</p>
+                  </div>
                 </div>
               </li>
               <li className="flex items-start gap-4">

@@ -5,15 +5,17 @@ import Layout from "@/components/layout/Layout";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import GlowCard from "@/components/ui/GlowCard";
 import image7 from "@/assets/image 7.png";
+import { useQuery } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 
-const stats = [
+const staticStats = [
   { value: "5-7+", label: "Years Experience" },
   { value: "500+", label: "Entrepreneurs Guided" },
   { value: "100+", label: "Businesses Transformed" },
   { value: "50+", label: "Workshops Conducted" },
 ];
 
-const values = [
+const staticValues = [
   {
     icon: Target,
     title: "Clarity in Vision",
@@ -36,7 +38,25 @@ const values = [
   },
 ];
 
+const staticStory = [
+  "I’m not a motivational speaker. I’m a Business Structure & System Coach.",
+  "Over the years, I’ve worked with MSME, B2B, and Service Sector owners to move them from 'Everything depends on me' to a business that runs with clarity, systems, and accountable teams.",
+  "As the CEO of Kauzar Academy, I designed Business FrameX — a practical framework focused on one goal: Owner Liberation."
+];
+
 const About = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["about"],
+    queryFn: async () => {
+      const res = await fetch("/api/about");
+      if (!res.ok) throw new Error("Failed to fetch");
+      return res.json();
+    },
+  });
+
+  const displayStats = data?.content?.about_stats?.length > 0 ? data.content.about_stats : staticStats;
+  const displayStory = data?.content?.about_story?.length > 0 ? data.content.about_story : staticStory;
+
   return (
     <>
       <Helmet>
@@ -76,17 +96,13 @@ const About = () => {
                   </h1>
 
                   <div className="space-y-6 text-slate-400 text-lg md:text-xl leading-relaxed font-body font-light">
-                    <p>
-                      I’m not a motivational speaker. I’m a <span className="text-white font-medium underline decoration-primary/30 underline-offset-8">Business Structure & System Coach</span>.
-                    </p>
-
-                    <p>
-                      Over the years, I’ve worked with MSME, B2B, and Service Sector owners to move them from <span className="text-slate-200">"Everything depends on me"</span> to a business that runs with clarity, systems, and accountable teams.
-                    </p>
-
-                    <p className="italic text-slate-300 border-l-2 border-primary/20 pl-6 py-2">
-                      As the CEO of Kauzar Academy, I designed Business FrameX — a practical framework focused on one goal: Owner Liberation.
-                    </p>
+                    {displayStory.map((para, idx) => (
+                      <p key={idx} dangerouslySetInnerHTML={{
+                        __html: para
+                          .replace(/Business Structure & System Coach/g, '<span class="text-white font-medium underline decoration-primary/30 underline-offset-8">Business Structure & System Coach</span>')
+                          .replace(/"Everything depends on me"/g, '<span class="text-slate-200">"Everything depends on me"</span>')
+                      }} />
+                    ))}
                   </div>
                 </AnimatedSection>
               </div>
@@ -131,19 +147,27 @@ const About = () => {
         <section className="py-20 relative bg-background/50">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <AnimatedSection key={index} delay={index * 0.1}>
-                  <motion.div
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.03)" }}
-                    className="text-center p-10 rounded-[2.5rem] bg-white/[0.01] border border-white/5 backdrop-blur-sm transition-all duration-500"
-                  >
-                    <p className="font-display text-4xl md:text-5xl font-black text-white mb-3 tracking-tighter">
-                      {stat.value}
-                    </p>
-                    <p className="text-primary text-xs uppercase tracking-[0.2em] font-semibold">{stat.label}</p>
-                  </motion.div>
-                </AnimatedSection>
-              ))}
+              {isLoading ? (
+                <div className="col-span-4 flex justify-center py-10">
+                  <Loader2 className="animate-spin text-primary" />
+                </div>
+              ) : (
+                displayStats.map((stat, index) => (
+                  <AnimatedSection key={index} delay={index * 0.1}>
+                    <GlowCard>
+                      <div className="text-center space-y-2">
+                        <h3 className="font-display text-4xl font-black text-white">
+                          {stat.value}
+                        </h3>
+                        <p className="text-slate-400 font-body text-sm uppercase tracking-wide">
+                          {stat.label}
+                        </p>
+                      </div>
+                    </GlowCard>
+                  </AnimatedSection>
+                ))
+
+              )}
             </div>
           </div>
         </section>
@@ -285,7 +309,7 @@ const About = () => {
             </div>
           </div>
         </section>
-      </Layout>
+      </Layout >
     </>
   );
 };

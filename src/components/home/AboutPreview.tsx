@@ -3,7 +3,7 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import aboutImg from "@/assets/image 9.png";
 
 import { VideoPlayer } from "@/components/ui/video-thumbnail-player";
-import videoV1 from "@/assets/video 1.mp4";
+import videoV1 from "@/assets/video 2.mp4";
 import videoThumb from "@/assets/image 41.jpeg";
 
 const stats = [

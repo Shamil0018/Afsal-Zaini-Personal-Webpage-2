@@ -103,7 +103,7 @@ const VideoPlayer = React.forwardRef<HTMLDivElement, VideoPlayerProps>(
                         {/* Close Button */}
                         <button
                             onClick={() => setIsModalOpen(false)}
-                            className="absolute right-6 top-6 z-[110] rounded-full bg-white/10 p-3 text-white transition-all hover:bg-white/20 hover:scale-110"
+                            className="absolute right-6 top-20 z-[110] rounded-full bg-white/10 p-3 text-white transition-all hover:bg-white/20 hover:scale-110 shadow-lg"
                             aria-label="Close video player"
                         >
                             <X className="h-6 w-6" />

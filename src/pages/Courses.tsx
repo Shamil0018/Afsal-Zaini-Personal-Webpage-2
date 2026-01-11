@@ -59,6 +59,10 @@ const Courses = () => {
       if (!res.ok) throw new Error("Failed to fetch");
       return res.json();
     },
+    placeholderData: {
+      courses: staticCourses,
+    },
+    staleTime: 1000 * 60 * 5,
   });
 
   const displayCourses = data?.courses?.length > 0 ? data.courses : staticCourses;
@@ -110,88 +114,78 @@ const Courses = () => {
         <section className="py-20 bg-background">
           <div className="container mx-auto px-6">
             <div className="space-y-24">
-              {isLoading ? (
-                <div className="flex justify-center py-20">
-                  <Loader2 className="h-10 w-10 animate-spin text-primary" />
-                </div>
-              ) : (
-                displayCourses.map((course, index) => (
-                  <AnimatedSection key={index} delay={index * 0.1}>
-                    <motion.div
-                      whileHover={{ scale: 1.01 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="group relative rounded-[3.5rem] overflow-hidden border border-white/5 bg-white/[0.01] backdrop-blur-sm hover:border-primary/20 transition-all duration-500 shadow-2xl"
-                    >
-                      <div className="relative p-8 md:p-14">
-                        <div className="grid lg:grid-cols-12 gap-12 items-center">
-                          {/* Left side: Image & Title */}
-                          <div className="lg:col-span-12 xl:col-span-5">
-                            <div className="relative rounded-[2.5rem] overflow-hidden mb-10 aspect-video xl:aspect-square group">
-                              <img
-                                src={course.image}
-                                alt={course.title}
-                                className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                              <div className="absolute bottom-6 left-6 right-6">
-                                <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 mb-2">
-                                  <span className="text-primary text-[10px] font-black uppercase tracking-widest">
-                                    Elite Program
-                                  </span>
-                                </div>
+              {displayCourses.map((course, index) => (
+                <AnimatedSection key={index} delay={index * 0.1}>
+                  <motion.div
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="group relative rounded-[3.5rem] overflow-hidden border border-white/5 bg-white/[0.01] backdrop-blur-sm hover:border-primary/20 transition-all duration-500 shadow-2xl"
+                  >
+                    <div className="relative p-8 md:p-14">
+                      <div className="grid lg:grid-cols-12 gap-12 items-center">
+                        {/* Left side: Image & Title */}
+                        <div className="lg:col-span-12 xl:col-span-5">
+                          <div className="relative rounded-[2.5rem] overflow-hidden mb-10 aspect-video xl:aspect-square group">
+                            <img
+                              src={course.image}
+                              alt={course.title}
+                              className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                            <div className="absolute bottom-6 left-6 right-6">
+                              <div className="inline-block px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 mb-2">
+                                <span className="text-primary text-[10px] font-black uppercase tracking-widest">
+                                  Elite Program
+                                </span>
                               </div>
                             </div>
-
-                            <h2 className="font-display text-3xl md:text-4xl font-black text-white mb-6 tracking-tight leading-tight group-hover:text-primary transition-colors">
-                              {course.title}
-                            </h2>
-
-                            {/* <p className="text-slate-400 text-lg leading-relaxed font-body font-light">
-                              {course.description}
-                            </p> */}
                           </div>
 
-                          {/* Right side: Features */}
-                          <div className="lg:col-span-12 xl:col-span-7">
-                            <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-10 md:p-14 backdrop-blur-xl">
-                              <h3 className="font-display text-xs font-bold text-slate-500 uppercase tracking-[0.4em] mb-10">
-                                Strategic Objectives
-                              </h3>
+                          <h2 className="font-display text-3xl md:text-4xl font-black text-white mb-6 tracking-tight leading-tight group-hover:text-primary transition-colors">
+                            {course.title}
+                          </h2>
+                        </div>
 
-                              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 mb-12">
-                                {course.features.map((feature, fIndex) => (
-                                  <div key={fIndex} className="flex items-start gap-5 group/item">
-                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-primary transition-all duration-300">
-                                      <CheckCircle2 className="w-3.5 h-3.5 text-primary group-hover/item:text-white transition-colors" />
-                                    </div>
-                                    <span className="text-slate-300 font-body text-base group-hover/item:text-white transition-colors">
-                                      {feature}
-                                    </span>
+                        {/* Right side: Features */}
+                        <div className="lg:col-span-12 xl:col-span-7">
+                          <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-10 md:p-14 backdrop-blur-xl">
+                            <h3 className="font-display text-xs font-bold text-slate-500 uppercase tracking-[0.4em] mb-10">
+                              Strategic Objectives
+                            </h3>
+
+                            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 mb-12">
+                              {course.features.map((feature, fIndex) => (
+                                <div key={fIndex} className="flex items-start gap-5 group/item">
+                                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/item:bg-primary transition-all duration-300">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-primary group-hover/item:text-white transition-colors" />
                                   </div>
-                                ))}
-                              </div>
+                                  <span className="text-slate-300 font-body text-base group-hover/item:text-white transition-colors">
+                                    {feature}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
 
-                              <div className="flex justify-start">
-                                <Button
-                                  asChild
-                                  size="lg"
-                                  className="h-[60px] rounded-[2.5rem] px-16 text-xl font-black group/btn overflow-hidden relative shadow-2xl shadow-primary/20"
-                                >
-                                  <Link to="/contact" className="relative z-10 w-full h-full flex items-center justify-center">
-                                    Join BizZen Programs
-                                    <ArrowRight className="ml-3 h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover/btn:opacity-100 transition-opacity -z-10" />
-                                  </Link>
-                                </Button>
-                              </div>
+                            <div className="flex justify-start">
+                              <Button
+                                asChild
+                                size="lg"
+                                className="h-[60px] rounded-[2.5rem] px-16 text-xl font-black group/btn overflow-hidden relative shadow-2xl shadow-primary/20"
+                              >
+                                <Link to="/contact" className="relative z-10 w-full h-full flex items-center justify-center">
+                                  Join BizZen Programs
+                                  <ArrowRight className="ml-3 h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
+                                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover/btn:opacity-100 transition-opacity -z-10" />
+                                </Link>
+                              </Button>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </motion.div>
-                  </AnimatedSection>
-                ))
-              )}
+                    </div>
+                  </motion.div>
+                </AnimatedSection>
+              ))}
             </div>
           </div>
         </section>

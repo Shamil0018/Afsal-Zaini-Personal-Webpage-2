@@ -52,6 +52,13 @@ const About = () => {
       if (!res.ok) throw new Error("Failed to fetch");
       return res.json();
     },
+    placeholderData: {
+      content: {
+        about_stats: staticStats,
+        about_story: staticStory,
+      }
+    },
+    staleTime: 1000 * 60 * 5, // 5 minutes cache
   });
 
   const displayStats = data?.content?.about_stats?.length > 0 ? data.content.about_stats : staticStats;
@@ -147,27 +154,20 @@ const About = () => {
         <section className="py-20 relative bg-background/50">
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {isLoading ? (
-                <div className="col-span-4 flex justify-center py-10">
-                  <Loader2 className="animate-spin text-primary" />
-                </div>
-              ) : (
-                displayStats.map((stat, index) => (
-                  <AnimatedSection key={index} delay={index * 0.1}>
-                    <GlowCard>
-                      <div className="text-center space-y-2">
-                        <h3 className="font-display text-4xl font-black text-white">
-                          {stat.value}
-                        </h3>
-                        <p className="text-slate-400 font-body text-sm uppercase tracking-wide">
-                          {stat.label}
-                        </p>
-                      </div>
-                    </GlowCard>
-                  </AnimatedSection>
-                ))
-
-              )}
+              {displayStats.map((stat, index) => (
+                <AnimatedSection key={index} delay={index * 0.1}>
+                  <GlowCard>
+                    <div className="text-center space-y-2">
+                      <h3 className="font-display text-4xl font-black text-white">
+                        {stat.value}
+                      </h3>
+                      <p className="text-slate-400 font-body text-sm uppercase tracking-wide">
+                        {stat.label}
+                      </p>
+                    </div>
+                  </GlowCard>
+                </AnimatedSection>
+              ))}
             </div>
           </div>
         </section>

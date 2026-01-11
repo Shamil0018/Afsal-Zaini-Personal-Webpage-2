@@ -63,6 +63,10 @@ const Events = () => {
       if (!res.ok) throw new Error("Failed to fetch");
       return res.json();
     },
+    placeholderData: {
+      events: staticEvents,
+    },
+    staleTime: 1000 * 60 * 5,
   });
 
   const displayEvents = data?.events?.length > 0 ? data.events : staticEvents;
@@ -127,73 +131,67 @@ const Events = () => {
 
             <div className="overflow-hidden cursor-grab active:cursor-grabbing px-2" ref={emblaRef}>
               <div className="flex gap-8">
-                {isLoading ? (
-                  <div className="w-full flex justify-center py-20">
-                    <Loader2 className="h-10 w-10 animate-spin text-primary" />
-                  </div>
-                ) : (
-                  displayEvents.map((event, index) => (
-                    <motion.div
-                      key={event.id}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="relative flex-shrink-0 w-80 md:w-[400px]"
-                    >
-                      <div className="group relative bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-primary/20">
-                        {/* Image Section */}
-                        <div className="relative aspect-[4/5] overflow-hidden">
-                          <img
-                            src={event.image}
-                            alt={event.title}
-                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
+                {displayEvents.map((event, index) => (
+                  <motion.div
+                    key={event.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="relative flex-shrink-0 w-80 md:w-[400px]"
+                  >
+                    <div className="group relative bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden backdrop-blur-sm transition-all duration-500 hover:border-primary/20">
+                      {/* Image Section */}
+                      <div className="relative aspect-[4/5] overflow-hidden">
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-90" />
 
-                          {/* Floating Meta */}
-                          <div className="absolute top-6 left-6 right-6 flex justify-between items-center z-20">
-                            <div className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/10">
-                              <span className="text-primary text-xs font-bold uppercase tracking-widest">{event.type}</span>
-                            </div>
-
-                            <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
-                              <div className={`w-2 h-2 rounded-full ${event.status === "Available" ? "bg-green-500 animate-pulse" : "bg-slate-500"}`} />
-                              <span className="text-white text-[10px] font-semibold uppercase tracking-tighter">{event.status}</span>
-                            </div>
+                        {/* Floating Meta */}
+                        <div className="absolute top-6 left-6 right-6 flex justify-between items-center z-20">
+                          <div className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/10">
+                            <span className="text-primary text-xs font-bold uppercase tracking-widest">{event.type}</span>
                           </div>
 
-                          {/* Content Overlay */}
-                          <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
-                            <div className="flex items-center gap-6 text-sm text-slate-300 mb-4 font-light">
-                              <div className="flex items-center gap-2">
-                                <Calendar className="w-4 h-4 text-primary" />
-                                <span>{event.date}</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <MapPin className="w-4 h-4 text-primary" />
-                                <span>{event.location}</span>
-                              </div>
-                            </div>
-
-                            <h3 className="font-display text-2xl font-bold text-white group-hover:text-primary transition-colors duration-300">
-                              {event.title}
-                            </h3>
-
-                            <motion.div
-                              initial={{ opacity: 0, y: 10 }}
-                              whileHover={{ opacity: 1, y: 0 }}
-                              className="mt-6 pt-6 border-t border-white/10 flex justify-between items-center scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"
-                            >
-                              <span className="text-xs text-slate-400 font-medium uppercase tracking-widest">Explore Event</span>
-                              <ArrowUpRight className="w-5 h-5 text-primary" />
-                            </motion.div>
+                          <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
+                            <div className={`w-2 h-2 rounded-full ${event.status === "Available" ? "bg-green-500 animate-pulse" : "bg-slate-500"}`} />
+                            <span className="text-white text-[10px] font-semibold uppercase tracking-tighter">{event.status}</span>
                           </div>
                         </div>
+
+                        {/* Content Overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+                          <div className="flex items-center gap-6 text-sm text-slate-300 mb-4 font-light">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-primary" />
+                              <span>{event.date}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <MapPin className="w-4 h-4 text-primary" />
+                              <span>{event.location}</span>
+                            </div>
+                          </div>
+
+                          <h3 className="font-display text-2xl font-bold text-white group-hover:text-primary transition-colors duration-300">
+                            {event.title}
+                          </h3>
+
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            whileHover={{ opacity: 1, y: 0 }}
+                            className="mt-6 pt-6 border-t border-white/10 flex justify-between items-center scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500"
+                          >
+                            <span className="text-xs text-slate-400 font-medium uppercase tracking-widest">Explore Event</span>
+                            <ArrowUpRight className="w-5 h-5 text-primary" />
+                          </motion.div>
+                        </div>
                       </div>
-                    </motion.div>
-                  ))
-                )}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>

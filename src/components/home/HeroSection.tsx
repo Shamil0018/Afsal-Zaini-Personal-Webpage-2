@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBgImg from "@/assets/hero-bg.png";
+import heroBgImg from "@/assets/image 47.jpeg";
 
 const HeroSection = () => {
   return (

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Rocket, CheckCircle2, ChevronRight } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import img15 from "@/assets/image 15.png";
+import img15 from "@/assets/image 13.png";
 
 const targetAudience = [
   "Business Owners & Founders",
@@ -34,7 +34,7 @@ const ConsultingSection = () => {
                 <img
                   src={img15}
                   alt="Business Strategy Mastery"
-                  className="w-full h-full object-cover object-[center_102%] grayscale-[40%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-[center_102%] grayscale-[40%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-65"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>
